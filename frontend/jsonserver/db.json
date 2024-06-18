@@ -1,0 +1,150 @@
+{
+  "categorias": [
+    {
+      "id": "1",
+      "categoria": "Pen Drive"
+    },
+    {
+      "id": "2",
+      "categoria": "Mouse"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "1",
+      "id_categoria": 3,
+      "nome": "MONITOR GAMER ASUS ROG SWIFT PG32UQR, 32 POL, IPS, 4K UHD, 1MS, 144HZ, FREESYNC PREMIUM/G-SYNC, HDMI/DP, 90LM0770-B011X0",
+      "valor": "11700.00",
+      "promo": "7000.10",
+      "promoNumber": "7000.10",
+      "imagemg": "monitores/monitor1g.jpg",
+      "imagemp": "monitores/monitor1p.jpg"
+    },
+    {
+      "id": "2",
+      "id_categoria": 3,
+      "nome": "MONITOR GAMER BENQ MOBIUZ EX3410R, 34 POL. VA CURVO, UWQHD, 1MS, 144HZ, FREESYNC PREMIUM PRO, HDMI/DP, 9H.LKKLA.TBA",
+      "valor": "8700.00",
+      "promo": "5399.00",
+      "promoNumber": "5399.00",
+      "imagemg": "monitores/monitor2g.jpg",
+      "imagemp": "monitores/monitor2p.jpg"
+    },
+    {
+      "id": "3",
+      "id_categoria": 3,
+      "nome": "MONITOR GAMER MSI G27C4X, 27 POL, VA, FHD, 1MS, 250HZ, HDMI/DP, G27C4X",
+      "valor": "3299.90",
+      "promo": "1195.00",
+      "promoNumber": "1195.00",
+      "imagemg": "monitores/monitor3g.jpg",
+      "imagemp": "monitores/monitor3p.jpg"
+    },
+    {
+      "id": "4",
+      "id_categoria": 3,
+      "nome": "MONITOR GAMER ASROCK CL25FF, 24.5 POL, IPS, FHD, 1MS, 100HZ, FREESYNC, HDMI/VGA, CL25FF",
+      "valor": "1500.90",
+      "promo": "700.99",
+      "promoNumber": "469.99",
+      "imagemg": "monitores/monitor4g.jpg",
+      "imagemp": "monitores/monitor4p.jpg"
+    },
+    {
+      "id": "5",
+      "id_categoria": 3,
+      "nome": "MONITOR SAMSUNG ODYSSEY ARK 2ND GEN, 55 POL. VA CURVO, UHD 4K, 1MS, 165HZ, FREESYNC PREMIUM PRO, HDMI/DP, LS55CG97WNLXZD",
+      "valor": "22000.99",
+      "promo": "14000.99",
+      "promoNumber": "14000.99",
+      "imagemg": "monitores/monitor5g.jpg",
+      "imagemp": "monitores/monitor5p.jpg"
+    },
+    {
+      "id": "6",
+      "id_categoria": 2,
+      "nome": "MOUSE GAMER PCYES BASARAN BLACK VULCAN, RGB, 12400DPI, 6 BOTOES, PMGBRBV",
+      "valor": "150.00",
+      "promo": "99.05",
+      "promoNumber": "99.05",
+      "imagemg": "mouse/mouse1g.jpg",
+      "imagemp": "mouse/mouse1p.jpg"
+    },
+    {
+      "id": "7",
+      "id_categoria": 2,
+      "nome": "MOUSE VERTICAL LOGITECH LIFT, BLUETOOTH, 4000DPI, 6 BOTOES, CANHOTO, GRAPHITE, 910-006467",
+      "valor": "411.00",
+      "promo": "299.99",
+      "promoNumber": "299.99",
+      "imagemg": "mouse/mouse2g.jpg",
+      "imagemp": "mouse/mouse2p.jpg"
+    },
+    {
+      "id": "8",
+      "id_categoria": 2,
+      "nome": "MOUSE GAMER FORTREK SPIDER 2, 6 BOTOES, 3200DPI, PRETO E VERMELHO, 60838",
+      "valor": "41.99",
+      "promo": "32.99",
+      "promoNumber": "32.99",
+      "imagemg": "mouse/mouse3g.jpg",
+      "imagemp": "mouse/mouse3p.jpg"
+    },
+    {
+      "id": "9",
+      "id_categoria": 2,
+      "nome": "MOUSE LOGITECH M90 USB PRETO, 910-004053",
+      "valor": "52.90",
+      "promo": "15.00",
+      "promoNumber": "15.00",
+      "imagemg": "mouse/mouse4g.jpg",
+      "imagemp": "mouse/mouse4p.jpg"
+    },
+    {
+      "id": "10",
+      "id_categoria": 1,
+      "nome": "PEN DRIVE SANDISK CRUZER BLADE 64GB USB 2.0, SDCZ50-064G-B35",
+      "valor": "90.90",
+      "promo": "39.90",
+      "promoNumber": "39.90",
+      "imagemg": "pendrives/pendrive1g.jpg",
+      "imagemp": "pendrives/pendrive1p.jpg"
+    },
+    {
+      "id": "11",
+      "id_categoria": 1,
+      "nome": "PEN DRIVE SANDISK ULTRA SHIFT, 64GB, USB 3.2, ROXO, SDCZ410-064G-G46CO",
+      "valor": "190.90",
+      "promo": "42.90",
+      "promoNumber": "42.90",
+      "imagemg": "pendrives/pendrive2g.jpg",
+      "imagemp": "pendrives/pendrive2p.jpg"
+    },
+    {
+      "id": "12",
+      "id_categoria": 1,
+      "nome": "PENDRIVE MULTI 16GB TWIST PRETO/INOX, PD588",
+      "valor": "220.90",
+      "promo": "109.90",
+      "promoNumber": "109.90",
+      "imagemg": "pendrives/pendrive3g.jpg",
+      "imagemp": "pendrives/pendrive3p.jpg"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Admin",
+      "email": "admin@gmail.com",
+      "senha": "123",
+      "permissoes": "admin"
+    },
+    {
+      "id": "2",
+      "nome": "Colaborador",
+      "email": "colaborador@gmail.com",
+      "senha": "123",
+      "permissoes": "colaborador"
+    }
+  ]
+}

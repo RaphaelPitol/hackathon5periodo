@@ -1,0 +1,16 @@
+.main {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 100vw;
+     height: 100vh;
+}
+
+.border {
+     border: 2px;
+     border-color: #ccc;
+     border-style: solid;
+     padding: 20px;
+}
+

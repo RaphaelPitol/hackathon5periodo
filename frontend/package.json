@@ -1,0 +1,31 @@
+{
+  "name": "painel-1pitchau",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "server": "npx json-server ./jsonserver/db.json --port 3001"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "json-server": "^1.0.0-beta.1",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "next": "14.2.3",
+    "nookies": "^2.5.2",
+    "react": "^18",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}
