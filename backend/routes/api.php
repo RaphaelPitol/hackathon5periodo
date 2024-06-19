@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResponsavelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/teste', function(){
-  return response([
-    "mensagem" => "O sistema esta ON"
-  ], 200);
-});
+Route::get('/login', [ResponsavelController::class, 'login']);
+Route::post('/create', [ResponsavelController::class, 'create']);
