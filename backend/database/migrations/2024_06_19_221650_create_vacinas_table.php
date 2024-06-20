@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('marca');
+            $table->string('descricao');
             $table->date('validade');
             $table->timestamps();
         });
@@ -23,6 +24,8 @@ return new class extends Migration
           $table->id();
           $table->foreignId('idoso_id')->constrained()->onDelete('cascade');
           $table->foreignId('vacina_id')->constrained()->onDelete('cascade');
+          $table->date('data_vacinacao');
+          $table->foreignId('agente_id')->constrained()->onDelete('cascade');
           $table->timestamps();
       });
     }

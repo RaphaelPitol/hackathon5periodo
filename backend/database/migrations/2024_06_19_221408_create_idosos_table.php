@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('telefone', 11);
             $table->string('cep');
             $table->string('cidade');
-            $table->string('rua');
+            $table->string('endereco');
             $table->string('numero');
-            $table->text('historico_medico');
+            $table->text('comorbidade');
             $table->foreignId('responsavel_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

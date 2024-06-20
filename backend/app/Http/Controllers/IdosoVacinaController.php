@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agendamento;
+use App\Models\IdosoVacina;
 use Illuminate\Http\Request;
 
-class AgendamentoController extends Controller
+class IdosoVacinaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,14 +20,15 @@ class AgendamentoController extends Controller
      */
     public function create(Request $request)
     {
-        $request = $request->except('_token');
+        //
+        $idosoVacina = $request->except('_token');
 
-        Agendamento::create($request);
+        IdosoVacina::create($idosoVacina);
 
         return response()->json([
-            'success' => 'Gravado com sucesso!',
-            'responsavel' => $request
-          ]);
+            "mensagem" => "Vacinado com sucessso",
+            "idoso" => $idosoVacina
+        ], 201);
     }
 
     /**

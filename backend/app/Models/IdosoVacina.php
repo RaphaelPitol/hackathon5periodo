@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Agendamento extends Model
+class IdosoVacina extends Model
 {
     use HasFactory;
 
+    protected $table = 'idoso_vacina';
+
     protected $fillable = [
         'idoso_id',
-        'data_hora',
-        'status'
+        'vacina_id',
+        'data_vacinacao',
+        'agente_id'
     ];
-    public function idoso()
-    {
-        return $this->belongsTo(Idoso::class);
-    }
 }

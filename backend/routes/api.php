@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AgendamentoController;
+use App\Http\Controllers\AgenteSaudeController;
 use App\Http\Controllers\IdosoController;
+use App\Http\Controllers\IdosoVacinaController;
 use App\Http\Controllers\ResponsavelController;
+use App\Http\Controllers\VacinaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +27,7 @@ Route::post('/login', [ResponsavelController::class, 'login']);
 Route::post('/create', [ResponsavelController::class, 'create']);
 Route::post('/createidoso', [IdosoController::class, 'create']);
 Route::get('/show/{id}', [IdosoController::class, 'show']);
+Route::post('/createvacina', [VacinaController::class, 'create']);
+Route::post('/createagente', [AgenteSaudeController::class, 'create']);
+Route::post('/createagendamento', [AgendamentoController::class, 'create']);
+Route::post('/createvacinacao', [IdosoVacinaController::class, 'create']);

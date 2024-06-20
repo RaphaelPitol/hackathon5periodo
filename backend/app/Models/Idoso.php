@@ -10,16 +10,16 @@ class Idoso extends Model
     use HasFactory;
 
     protected $fillable = [
-      'nome',
-	    'data_nascimento',
-	    'telefone',
-	    'cep',
-	    'cidade',
-	    'rua',
-	    'numero',
-	    'historico_medico',
-      'responsavel_id'
-  ];
+        'nome',
+        'data_nascimento',
+        'telefone',
+        'cep',
+        'cidade',
+        'endereco',
+        'numero',
+        'comorbidade',
+        'responsavel_id'
+    ];
 
     public function responsavel()
     {

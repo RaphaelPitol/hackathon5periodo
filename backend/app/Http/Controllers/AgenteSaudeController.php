@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agente;
+use Doctrine\DBAL\Query\QueryException;
+use Illuminate\Database\QueryException as DatabaseQueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AgenteSaudeController extends Controller
 {
@@ -17,10 +21,56 @@ class AgenteSaudeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $agente = new Agente();
+        $agente->nome = $request->nome;
+        $agente->telefone = $request->telefone;
+        $agente->cpf = $request->cpf;
+        $agente->password = Hash::make($request->password);
+
+        if (!is_numeric($agente->telefone)){
+          return response()->json(
+            [
+                "mensagem" => "Telefone deve conter somente numeros!"
+            ], 400
+        );
+        }
+          if(strlen($agente->telefone) > 11 || strlen($agente->telefone) < 10){
+            return response()->json(
+              [
+                  "mensagem" => "Telefone ser fixo ou Celular!"
+              ], 400
+          );
+
+          }
+
+
+        try {
+            $agente->save();
+            return response()->json(
+                [
+                    "mensagem" => "Agente cadastrado com sucesso",
+                    "agente" => $agente
+                ], 200
+            );
+        } catch (DatabaseQueryException $e) {
+            if ($e->errorInfo[1] == 1062) {
+                return response()->json(
+                    [
+                        "mensagem" => "CPF ja cadastrado"
+                    ], 400
+                );
+            } else {
+                return response()->json(
+                    [
+                        "mensagem" => "Erro ao cadastrar o responsável"
+                    ], 500
+                );
+            }
+        }
     }
+    
 
     /**
      * Store a newly created resource in storage.
