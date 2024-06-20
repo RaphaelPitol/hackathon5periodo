@@ -3,18 +3,19 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 export async function POST(req: Request) {
-    const { email, senha } = await req.json();
+    const { cpf, password } = await req.json();
 
+    console.log(cpf);
     try {
         let usuario = await axios.get(
-            "http://localhost:3001/usuarios?email=" + email
+            `http://127.0.0.1:8000/api/login?cpf=${cpf}&password=${password}`
         );
         console.log(usuario);
         if (usuario.data.length === 1) {
-            if (usuario.data[0].senha === senha) {
+            if (usuario.data[0].password === password) {
                 let objusuario = usuario.data[0];
 
-                delete objusuario.senha;
+                delete objusuario.password;
 
                 const token = jwt.sign(
                     objusuario,
