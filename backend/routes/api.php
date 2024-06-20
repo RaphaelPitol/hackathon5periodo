@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IdosoController;
 use App\Http\Controllers\ResponsavelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [ResponsavelController::class, 'login']);
 Route::post('/create', [ResponsavelController::class, 'create']);
+Route::post('/createidoso', [IdosoController::class, 'create']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Idoso;
 use Illuminate\Http\Request;
 
 class IdosoController extends Controller
@@ -17,9 +18,17 @@ class IdosoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request = $request->except('_token');
+        // dd($request);
+        
+        Idoso::create($request);
+
+         return response()->json([
+          'success' => 'Gravado com sucesso!',
+          'responsavel' => $request
+        ]);
     }
 
     /**

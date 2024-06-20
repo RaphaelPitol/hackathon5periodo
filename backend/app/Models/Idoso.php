@@ -9,6 +9,18 @@ class Idoso extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+      'nome',
+	    'data_nascimento',
+	    'telefone',
+	    'cep',
+	    'cidade',
+	    'rua',
+	    'numero',
+	    'historico_medico',
+      'responsavel_id'
+  ];
+
     public function responsavel()
     {
         return $this->belongsTo(Responsavel::class);
