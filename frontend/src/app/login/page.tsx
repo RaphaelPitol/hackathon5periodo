@@ -75,8 +75,9 @@ export default function Login() {
             <div className={styles.main}>
                 <div className={styles.border}>
                     <div className="d-flex flex-column align-items-center">
+                    <img className='mb-4'src='https://www.alfaumuarama.edu.br/fau/images/logo_novo.png?v=1715725731'/>
                         <h1 className="text-primary">Login</h1>
-                        <p className="text-secondary">
+                        <p className="text-secondary text2">
                             Preencha os campos para logar no sistema!
                         </p>
                     </div>
@@ -130,6 +131,7 @@ export default function Login() {
                     </form>
                 </div>
             </div>
+            <p className='text-center m-4'>© 2024 Unialfa Umuarama  |  Todos os direitos reservados</p>
         </>
     );
 }

@@ -8,9 +8,14 @@
 }
 
 .border {
-     border: 2px;
-     border-color: #ccc;
-     border-style: solid;
-     padding: 20px;
+     border: 1px solid #cccc;
+     padding: 100px;
+     box-shadow: 0 0 4em rgb(185, 185, 255);
+     border-radius: 64px;
+}
+
+.text2 {
+
+    box-shadow: 0 0 4em gray;
 }
 
