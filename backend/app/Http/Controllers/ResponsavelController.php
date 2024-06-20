@@ -13,7 +13,7 @@ class ResponsavelController extends Controller
 
   public function login(Request $request)
 {
-    
+    error_log($request);
     $data = Responsavel::where('cpf', $request->cpf)->first();
 
 
@@ -23,8 +23,11 @@ class ResponsavelController extends Controller
 
  
     if (Hash::check($request->password, $data->password)) {
-       
-        return response()->json(['success' => 'Login bem-sucedido']);
+      //  $data->password = '';
+        return response()->json([
+          'success' => 'Login bem-sucedido',
+          'responsavel' => $data
+        ]);
     } else {
         
         return response()->json(['error' => 'Senha incorreta'], 401);

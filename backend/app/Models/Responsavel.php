@@ -14,4 +14,9 @@ class Responsavel extends Model
       'cpf',
       'password',
   ];
+
+  public function idosos()
+  {
+      return $this->hasMany(Idoso::class);
+  }
 }
