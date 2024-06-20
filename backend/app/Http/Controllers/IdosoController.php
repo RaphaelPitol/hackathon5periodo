@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Idoso;
 use Illuminate\Http\Request;
 
 class IdosoController extends Controller
@@ -17,30 +18,32 @@ class IdosoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request = $request->except('_token');
+        // dd($request);
+        
+        Idoso::create($request);
+
+         return response()->json([
+          'success' => 'Gravado com sucesso!',
+          'responsavel' => $request
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(string $id)
     {
-        //
+        $idoso = Idoso::find($id);
+
+        if(!$idoso){
+          return response()->json(["menssage" => "Nenhum registro encontrado!"]);
+        }
+
+        return response()->json([$idoso]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(string $id)
     {
         //

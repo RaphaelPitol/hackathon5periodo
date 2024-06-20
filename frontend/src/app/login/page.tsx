@@ -6,6 +6,8 @@ import { Toast } from "@/componentes/Toast";
 import { Loading } from "@/componentes/Loading";
 import { useRouter } from "next/navigation";
 import {setCookie} from 'nookies'
+import  jwt  from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 export default function Login() {
 
@@ -22,30 +24,22 @@ export default function Login() {
             setLoading(true);
 
             const target = e.target as typeof e.target & {
-                email: { value: string };
-                senha: { value: string };
+                cpf: { value: string };
+                password: { value: string };
             };
 
             axios
-                .post("/api/login", {
-                    email: target.email.value,
-                    senha: target.senha.value,
+                .post("http://127.0.0.1:8000/api/login", {
+                    cpf: target.cpf.value,
+                    password: target.password.value,
                 })
                 .then((res) => {
                     console.log(res.data)
-                    //SPA - React
-                    // LocalStorage -> Navegador
-                    // SessionStorage -> Navegador - X
-
-                    // Nextjs - SSR - Servidor
-                    // Requisição -> Headers
-                    // Cookies -> Navegador
-
-                    //gravando os dados no cookies do navegador
+                    
                     setCookie(
                         undefined,
                         'painel1pitchau.token',
-                        res.data.token 
+                         res.data.token
                     )
 
                     router.push('/dashboard')
@@ -90,14 +84,14 @@ export default function Login() {
                         ref={refForm}
                     >
                         <div className="col-md-12 mt-1">
-                            <label htmlFor="email" className="from-label">
+                            <label htmlFor="cpf" className="from-label">
                                 E-mail
                             </label>
                             <input
-                                type="email"
+                                type="cpf"
                                 className="form-control"
                                 placeholder="Digite seu email"
-                                id="email"
+                                id="cpf"
                                 required
                             />
                             <div className="invalid-feedback">
@@ -105,14 +99,14 @@ export default function Login() {
                             </div>
                         </div>
                         <div className="col-md-12">
-                            <label htmlFor="senha" className="from-label">
+                            <label htmlFor="password" className="from-label">
                                 Senha
                             </label>
                             <input
                                 type="password"
                                 className="form-control"
                                 placeholder="Digite sua senha"
-                                id="senha"
+                                id="password"
                                 required
                             />
                             <div className="invalid-feedback">
