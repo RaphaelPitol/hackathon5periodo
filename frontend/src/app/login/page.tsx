@@ -29,12 +29,13 @@ export default function Login() {
             };
 
             axios
-                .post("http://127.0.0.1:8000/api/login", {
+                .post("http://127.0.0.1:8000/api/loginagente", {
                     cpf: target.cpf.value,
                     password: target.password.value,
                 })
                 .then((res) => {
                     console.log(res.data)
+                    console.log("teste")
                     
                     setCookie(
                         undefined,

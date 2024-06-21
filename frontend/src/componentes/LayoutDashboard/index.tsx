@@ -32,7 +32,7 @@ export const LayoutDashboard = (props: Iprops) => {
                     className="navbar-brand col-md-3 col-lg-2 me-0 px-3"
                     href="#"
                 >
-                    Painel 1Pitchau
+                    Vacina São
                 </a>
                 <button
                     className="navbar-toggler position-absolute d-md-none collapsed"
@@ -70,26 +70,26 @@ export const LayoutDashboard = (props: Iprops) => {
                                         href={"/dashboard"}
                                     >
                                         <span data-feather="home"></span>
-                                        Categoria
+                                        VER VÉIU
                                     </a>
                                 </li>
 
-                                {
+                                {/* {
                                     validaPermissao(
                                         props.token, 
                                         ['admin', 'outrasPermissoes']
-                                    ) &&
+                                    ) && */}
                                 <li className="nav-item">
                                     <a
                                         className={`nav-link`}
                                         href={"/usuarios"}
                                     >
                                         <span data-feather="home"></span>
-                                        Usuários
+                                        VACINA VÉIO
                                     </a>
                                 </li>
 
-                                }
+                                {/* } */}
 
                                 <li className="nav-item">
                                     <a
@@ -97,7 +97,7 @@ export const LayoutDashboard = (props: Iprops) => {
                                         href={"/dashboard"}
                                     >
                                         <span data-feather="home"></span>
-                                        Produtos
+                                        AGENDA DUVÉIU
                                     </a>
                                 </li>
                             </ul>
