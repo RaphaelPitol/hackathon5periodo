@@ -27,7 +27,7 @@ class AgenteSaudeController extends Controller
          
           $payload = [
               'iss' => "laravel-jwt", 
-              'sub' => $agente->id, 
+              'sub' => $agente, 
               'iat' => time(), 
               'exp' => time() + 60*60*24 
           ];
