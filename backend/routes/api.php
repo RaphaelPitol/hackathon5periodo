@@ -32,3 +32,4 @@ Route::post('/createvacina', [VacinaController::class, 'create']);
 Route::post('/createagente', [AgenteSaudeController::class, 'create']);
 Route::post('/createagendamento', [AgendamentoController::class, 'create']);
 Route::post('/createvacinacao', [IdosoVacinaController::class, 'create']);
+Route::get('/index', [VacinaController::class, 'index']);
