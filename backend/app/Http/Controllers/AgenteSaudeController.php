@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agente;
 use Doctrine\DBAL\Query\QueryException;
+use Firebase\JWT\JWT;
 use Illuminate\Database\QueryException as DatabaseQueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,9 +14,39 @@ class AgenteSaudeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function login(Request $request)
     {
-        //
+      $agente = Agente::where('cpf', $request->cpf)->first();
+
+
+      if (!$agente) {
+          return response()->json(['error' => 'Usuário não encontrado'], 404);
+      }
+    
+      if (Hash::check($request->password, $agente->password)) {
+         
+          $payload = [
+              'iss' => "laravel-jwt", 
+              'sub' => $agente->id, 
+              'iat' => time(), 
+              'exp' => time() + 60*60*24 
+          ];
+    
+          $key = env('JWT_SECRET', '123456'); 
+          $token = JWT::encode($payload, $key, 'HS256');
+    
+       
+          $agente->password = '';
+    
+        
+          return response()->json([
+              'success' => 'Login bem-sucedido',
+              'agente' => $agente,
+              'token' => $token
+          ]);
+      } else {
+          return response()->json(['error' => 'Senha incorreta'], 401);
+      }
     }
 
     /**

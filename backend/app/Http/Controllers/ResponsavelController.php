@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Responsavel;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -13,25 +14,37 @@ class ResponsavelController extends Controller
 
   public function login(Request $request)
 {
-    error_log($request);
-    $data = Responsavel::where('cpf', $request->cpf)->first();
+  $responsavel = Responsavel::where('cpf', $request->cpf)->first();
 
 
-    if (!$data) {
-        return response()->json(['error' => 'Usuário não encontrado'], 404);
-    }
+  if (!$responsavel) {
+      return response()->json(['error' => 'Usuário não encontrado'], 404);
+  }
 
- 
-    if (Hash::check($request->password, $data->password)) {
-      //  $data->password = '';
-        return response()->json([
+  if (Hash::check($request->password, $responsavel->password)) {
+     
+      $payload = [
+          'iss' => "laravel-jwt", 
+          'sub' => $responsavel->id, 
+          'iat' => time(), 
+          'exp' => time() + 60*60*24 
+      ];
+
+      $key = env('JWT_SECRET', '123456'); 
+      $token = JWT::encode($payload, $key, 'HS256');
+
+   
+      $responsavel->password = '';
+
+    
+      return response()->json([
           'success' => 'Login bem-sucedido',
-          'responsavel' => $data
-        ]);
-    } else {
-        
-        return response()->json(['error' => 'Senha incorreta'], 401);
-    }
+          'responsavel' => $responsavel,
+          'token' => $token
+      ]);
+  } else {
+      return response()->json(['error' => 'Senha incorreta'], 401);
+  }
 }
 
     public function create(Request $request)

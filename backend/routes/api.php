@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/login', [ResponsavelController::class, 'login']);
+Route::post('/loginagente', [AgenteSaudeController::class, 'login']);
 Route::post('/create', [ResponsavelController::class, 'create']);
 Route::post('/createidoso', [IdosoController::class, 'create']);
 Route::get('/show/{id}', [IdosoController::class, 'show']);
