@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:app_flutter/config.dart';
 import 'package:app_flutter/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -130,17 +131,18 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<bool> login() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var url = Uri.parse('https://minhasapis.com.br/login/');
+    var url = Uri.parse(linkApi+'/login');
     var resposta = await http.post(
       url,
     body: {
-      'username': _cpfController.text,
+      'cpf': _cpfController.text,
       'password': _passwordController.text
     },
     );
-
+    var result = json.decode(resposta.body);
+    var cpf = result["responsavel"]["cpf"];
     if(resposta.statusCode == 200){
-      await sharedPreferences.setString('token', "Token${jsonDecode(resposta.body)['token']}");
+      await sharedPreferences.setString('token', cpf);
       return true;
     } else {
       return false;
