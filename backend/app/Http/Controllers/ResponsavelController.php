@@ -25,7 +25,7 @@ class ResponsavelController extends Controller
      
       $payload = [
           'iss' => "laravel-jwt", 
-          'sub' => $responsavel->id, 
+          'sub' => $responsavel, 
           'iat' => time(), 
           'exp' => time() + 60*60*24 
       ];
