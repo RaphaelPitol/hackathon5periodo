@@ -33,9 +33,8 @@ class MenuLateral extends StatelessWidget {
     return DrawerHeader(
       child: Column(
         children: [
-          Icon(Ionicons.car_sport, size:80,
-            color: Colors.blue.shade700,),
-          const Text('DashBoard'),
+          Icon(Icons.vaccines_outlined, color: Colors.blue, size: 60),
+          const Text('Menu', style: TextStyle(fontSize: 40),),
         ],
       ),
     );

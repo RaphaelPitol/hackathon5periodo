@@ -1,3 +1,5 @@
+import 'package:app_flutter/config.dart';
+import 'package:app_flutter/ui/pages/cadastro_idoso_page.dart';
 import 'package:app_flutter/ui/pages/historico_medico_page.dart';
 import 'package:app_flutter/ui/pages/inicio_page.dart';
 import 'package:app_flutter/ui/widgets/menu_lateral.dart';
@@ -25,11 +27,17 @@ class _HomePageState extends State<HomePage> {
         builder: (context) => HistoricoMedico()));
   }
 
+  void _abrirCadastroIdoso(){
+    Navigator.push(context, MaterialPageRoute(
+        builder: (context) => CadastroIdosoPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
 
     listaMenu = [
       {"Texto": "Página Inicial", "Clique": () { _abrirPaginaInicial();} },
+      {"Texto": "Cadastrar Idoso", "Clique": () { _abrirCadastroIdoso();} },
       {"Texto": "Histórico Médico", "Clique": () { _abrirHistoricoMedico();} },
       {"Texto": "Vacinas Pendentes", "Clique": () {} },
       {"Texto": "Sair", "Clique": () { _confirmarLogout();} },
@@ -38,20 +46,29 @@ class _HomePageState extends State<HomePage> {
     return Placeholder(
       child: Scaffold(
         appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Icon(Icons.local_gas_station_outlined, color: Colors.white, size: 36,),
-              SizedBox(width: 8,),
-              Text('Página Inicial', style: TextStyle(color: Colors.white),),
+             const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.vaccines_outlined, color: Colors.white, size: 40),
+                  SizedBox(width: 8),
+                  Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+                ],
+              ),
+              Text('Bem Vindo, $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
             ],
           ),
           backgroundColor: Colors.blueAccent.shade700,
+          elevation: 5,
+          shadowColor: Colors.black45,
+
         ),
         drawer: MenuLateral(listaItens: listaMenu),
         body: Column(
           children: [
-            Text('TESTEEEEEEEEE')
+            Text("Nome do Responsavel: "+ responsavel_nome)
           ],
         ),
       ),
