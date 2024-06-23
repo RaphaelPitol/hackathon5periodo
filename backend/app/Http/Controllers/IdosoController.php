@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Idoso;
+use DateTime;
 use Illuminate\Http\Request;
 
 class IdosoController extends Controller
@@ -20,14 +21,24 @@ class IdosoController extends Controller
      */
     public function create(Request $request)
     {
-        $request = $request->except('_token');
-        // dd($request);
-        
-        Idoso::create($request);
-
+      $data = new DateTime($request->data_nascimento);
+      
+      $idoso = new Idoso();
+      $idoso->nome = $request->nome;
+      $idoso->data_nascimento = $data->format('Y-m-d');
+      $idoso->telefone = $request->telefone;
+      $idoso->cep = $request->cep;
+      $idoso->cidade = $request->cidade;
+      $idoso->endereco = $request->endereco;
+      $idoso->numero = $request->numero;
+      $idoso->comorbidade = $request->comorbidade;
+      $idoso->responsavel_id = $request->responsavel_id;
+      $idoso->save();
+      // error_log($idoso);
+      
          return response()->json([
           'success' => 'Gravado com sucesso!',
-          'responsavel' => $request
+          'idoso' => $idoso
         ]);
     }
 
