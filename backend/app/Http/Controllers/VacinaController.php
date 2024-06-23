@@ -12,7 +12,9 @@ class VacinaController extends Controller
      */
     public function index()
     {
-        //
+        $vacinas = Vacina::all();
+
+        return response()->json(["vacinas" => $vacinas]);
     }
 
     /**
