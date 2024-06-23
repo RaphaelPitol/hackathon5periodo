@@ -4,7 +4,7 @@ import 'package:app_flutter/ui/widgets/menu_lateral.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
@@ -52,6 +52,30 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             Text('TESTEEEEEEEEE')
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/historico_medico');
+              },
+              child: Text('Histórico Médico'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/vacinas_pendentes');
+              },
+              child: Text('Vacinas Pendentes'),
+            ),
+
           ],
         ),
       ),

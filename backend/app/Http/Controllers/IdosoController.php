@@ -54,7 +54,26 @@ class IdosoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       
+
+        $idoso = Idoso::find($id);
+
+        error_log($idoso);
+        $idoso->nome = $request->nome;
+        $idoso->data_nascimento = $request->data_nascimento;
+        $idoso->telefone = $request->telefone;
+        $idoso->cep = $request->cep;
+        $idoso->cidade = $request->cidade;
+        $idoso->endereco = $request->endereco;
+        $idoso->numero = $request->numero;
+        $idoso->comorbidade = $request->comorbidade;
+        $idoso->responsavel_id = $request->responsavel_id;
+
+        $idoso->save();
+
+        return response()->json([
+            "mensagem" => "Atualizado",
+            "idoso" => $idoso]);
     }
 
     /**
