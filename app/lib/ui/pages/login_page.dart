@@ -193,9 +193,9 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       var userData = jsonDecode(response.body);
 
-      // Exemplo de como salvar dados do usuário após o login
-      // responsavel_nome = userData["responsavel"]["nome"];
-      // responsavel_id = userData["responsavel"]["id"];
+     
+      responsavel_nome = userData["responsavel"]["nome"];
+      responsavel_id = userData["responsavel"]["id"];
 
       // Salvar o token no SharedPreferences
       var prefs = await SharedPreferences.getInstance();

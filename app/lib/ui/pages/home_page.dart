@@ -59,17 +59,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () => _abrirHistoricoMedico(context),
-              child: Text('Histórico Médico'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/vacinas_pendentes');
-              },
-              child: Text('Vacinas Pendentes'),
-            ),
+            Text("Alguma coisa")
           ],
         ),
       ),
