@@ -92,6 +92,24 @@ class IdosoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      
+       
+        $idoso = Idoso::where('id', $id)->first();
+
+        if (!$idoso) {
+            return response()->json([
+                "menssagen" => "Idosos Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($idoso->id) {
+            Idoso::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
+        
     }
 }
