@@ -100,9 +100,14 @@ class HomePage extends StatelessWidget {
   void _logout(BuildContext context) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.clear();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context)=>HomePage()),
+            (Route<dynamic> route) => false);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => InicioPage()),
+      MaterialPageRoute(
+        builder: (_) => InicioPage(),
+      ),
     );
   }
 }
