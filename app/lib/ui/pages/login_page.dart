@@ -1,23 +1,19 @@
-
 import 'dart:convert';
 
 import 'package:app_flutter/config.dart';
-import 'package:app_flutter/ui/pages/cadastro_usuario_page.dart';
-import 'package:app_flutter/ui/pages/home_page.dart';
-import 'package:app_flutter/ui/widgets/campo_texto_cpf.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'cadastrar_usuario_page.dart';
-
+import 'home_page.dart';
+import '../widgets/campo_texto_cpf.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -54,16 +50,9 @@ class _LoginPageState extends State<LoginPage> {
     return {'cpf': cpf, 'password': password};
   }
 
-  Future<void> clearLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('cpf');
-    await prefs.remove('password');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Center(
@@ -131,11 +120,11 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () async {
                         FocusScopeNode currentFocus = FocusScope.of(context);
                         if (_formKey.currentState!.validate()) {
-                          bool deuCerto = await login();
+                          bool success = await login();
                           if (!currentFocus.hasPrimaryFocus) {
                             currentFocus.unfocus();
                           }
-                          if (deuCerto) {
+                          if (success) {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -144,8 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           } else {
                             _passwordController.clear();
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           }
                         }
                       },
@@ -163,119 +151,21 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  TextButton(onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CadastrarUsuarioPage()))
-                  }, child: Text("Cadastre-se"))
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CadastrarUsuarioPage(),
+                        ),
+                      );
+                    },
+                    child: Text("Cadastre-se"),
+                  ),
                 ],
               ),
             ),
           ),
-
-        )
-      body: Form(
-        key: _formKey,
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'CPF',
-                      hintText: '000.000.000-00',
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blueAccent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                    ),
-                    controller: _cpfController,
-                    keyboardType: TextInputType.text,
-                    validator: (cpf) {
-                      if (cpf == null || cpf.isEmpty) {
-                        return 'Preencha seu CPF!';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'SENHA',
-                    hintText: 'Digite sua senha',
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blueAccent),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                  ),
-                  controller: _passwordController,
-                  obscureText: true,
-                  keyboardType: TextInputType.text,
-                  validator: (senha) {
-                    if (senha == null || senha.isEmpty) {
-                      return 'Preencha sua senha!';
-                    } else if (senha.length < 6) {
-                      return 'Por favor, digite uma senha maior que 6 caracteres';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 30),
-                Container(
-                  margin: const EdgeInsets.only(top: 50.0),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      FocusScopeNode currentFocus = FocusScope.of(context);
-                      if (_formKey.currentState!.validate()) {
-                        bool deuCerto = await login();
-                        if (!currentFocus.hasPrimaryFocus) {
-                          currentFocus.unfocus();
-                        }
-                        if (deuCerto) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        } else {
-                          _passwordController.clear();
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(snackBar);
-                        }
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.green,
-                    ),
-                    child: const Text('ENTRAR'),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CadastrarUsuarioPage(),
-                      ),
-                    );
-                  },
-                  child: Text('Cadastrar Usuário'),
-                ),
-              ],
-            ),
-          ),
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
         ),
       ),
     );
@@ -283,43 +173,12 @@ class _LoginPageState extends State<LoginPage> {
 
   final snackBar = const SnackBar(
     content: Text(
-<<<<<<< HEAD
-      'cpf ou senha são inválidos',
-=======
-      'cpf ou senha são invaliidos',
-
       'CPF ou senha incorretos!',
-
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
       textAlign: TextAlign.center,
     ),
     backgroundColor: Colors.redAccent,
   );
 
-<<<<<<< HEAD
-  Future<bool> login() async {
-=======
-
-
-  login() async {
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
-    var url = Uri.parse('$linkApi/login');
-    Map<String, dynamic> body = {
-      'cpf': _cpfController.text,
-      'password': _passwordController.text,
-    };
-    var response = await http.post(url, body: body);
-
-    if (response.statusCode == 200) {
-      var userData = jsonDecode(response.body);
-
-<<<<<<< HEAD
-      responsavel_nome = userData["responsavel"]["nome"];
-      responsavel_id = userData["responsavel"]["id"];
-
-      await saveLogin(_cpfController.text, _passwordController.text);
-      return true;
-=======
   Future<bool> login() async {
     var url = Uri.parse('$linkApi/login');
     var response = await http.post(
@@ -332,16 +191,21 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     if (response.statusCode == 200) {
-      var dados = jsonDecode(response.body);
-      var prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', dados['token']);
-      return true;
+      var userData = jsonDecode(response.body);
 
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
+      // Exemplo de como salvar dados do usuário após o login
+      // responsavel_nome = userData["responsavel"]["nome"];
+      // responsavel_id = userData["responsavel"]["id"];
+
+      // Salvar o token no SharedPreferences
+      var prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', userData['token']);
+
+      // Salvar login para reuso futuro
+      await saveLogin(_cpfController.text, _passwordController.text);
+
+      return true;
     } else {
-      var snackBar = const SnackBar(
-        content: Text('Confira seu cpf e senha'),
-      );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return false;
     }
