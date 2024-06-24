@@ -55,9 +55,23 @@ class IdosoController extends Controller
     }
 
    
-    public function edit(string $id)
+    public function getIdosoResponsavel(string $id)
     {
-        //
+        $idosos = Idoso::all()->where('responsavel_id', $id);
+
+        if (!$idosos) {
+            return response()->json([
+                "menssagen" => "Não existe Idosos para este Responsavel!"
+            ]);
+        }
+      
+     
+
+            return response()->json([
+                "menssagen" => "Lista de Idosos",
+                "idosos" => $idosos
+            ]);
+        
     }
 
     /**

@@ -35,3 +35,4 @@ Route::post('/createvacinacao', [IdosoVacinaController::class, 'create']);
 Route::get('/index', [VacinaController::class, 'index']);
 Route::put('/updateidoso/{id}', [IdosoController::class, 'update']);
 Route::delete('/deleteidoso/{id}' , [IdosoController::class, 'destroy']);
+route::get('/getidososrespo/{id}', [IdosoController::class, 'getIdosoResponsavel']);
