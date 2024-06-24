@@ -1,91 +1,65 @@
 import 'package:app_flutter/config.dart';
-import 'package:app_flutter/ui/pages/cadastro_idoso_page.dart';
-import 'package:app_flutter/ui/pages/historico_medico_page.dart';
-import 'package:app_flutter/ui/pages/inicio_page.dart';
-import 'package:app_flutter/ui/widgets/menu_lateral.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'cadastro_idoso_page.dart';
+import 'historico_medico_page.dart';
+import 'inicio_page.dart';
+import '../widgets/menu_lateral.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-
-  late List<Map> listaMenu;
-
-  void _abrirPaginaInicial() {
-    Navigator.push(context, MaterialPageRoute(
-        builder: (context) => HomePage()));
+  void _abrirHistoricoMedico(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HistoricoMedicoPage()),
+    );
   }
 
-  void _abrirHistoricoMedico() {
-    Navigator.push(context, MaterialPageRoute(
-        builder: (context) => HistoricoMedico()));
-  }
-
-  void _abrirCadastroIdoso(){
-    Navigator.push(context, MaterialPageRoute(
-        builder: (context) => CadastroIdosoPage()));
+  void _abrirCadastroIdoso(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CadastroIdosoPage()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-
-    listaMenu = [
-      {"Texto": "Página Inicial", "Clique": () { _abrirPaginaInicial();} },
-      {"Texto": "Cadastrar Idoso", "Clique": () { _abrirCadastroIdoso();} },
-      {"Texto": "Histórico Médico", "Clique": () { _abrirHistoricoMedico();} },
+    List<Map> listaMenu = [
+      {"Texto": "Página Inicial", "Clique": () => _abrirPaginaInicial(context)},
+      {"Texto": "Cadastrar Idoso", "Clique": () => _abrirCadastroIdoso(context)},
+      {"Texto": "Histórico Médico", "Clique": () => _abrirHistoricoMedico(context)},
       {"Texto": "Vacinas Pendentes", "Clique": () {} },
-      {"Texto": "Sair", "Clique": () { _confirmarLogout();} },
-
+      {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
     ];
-    return Placeholder(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-             const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.vaccines_outlined, color: Colors.white, size: 40),
-                  SizedBox(width: 8),
-                  Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
-                ],
-              ),
-              Text('Bem Vindo, $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
-            ],
-          ),
-          backgroundColor: Colors.blueAccent.shade700,
-          elevation: 5,
-          shadowColor: Colors.black45,
 
-        ),
-        drawer: MenuLateral(listaItens: listaMenu),
-        body: Column(
-          children: [
-<<<<<<< HEAD
-            Text("Nome do Responsavel: "+ responsavel_nome)
-=======
-            Text('TESTEEEEEEEEE')
-
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.vaccines_outlined, color: Colors.white, size: 40),
+                SizedBox(width: 8),
+                Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Text('Bem Vindo, $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
+          ],
+        ),
+        backgroundColor: Colors.blueAccent.shade700,
+        elevation: 5,
+        shadowColor: Colors.black45,
       ),
+      drawer: MenuLateral(listaItens: listaMenu),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/historico_medico');
-              },
+              onPressed: () => _abrirHistoricoMedico(context),
               child: Text('Histórico Médico'),
             ),
             SizedBox(height: 20),
@@ -95,30 +69,22 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text('Vacinas Pendentes'),
             ),
-
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
           ],
         ),
       ),
     );
   }
 
-  logout() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.clear();
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context)=>HomePage()),
-            (Route<dynamic> route) => false);
-    Navigator.pushReplacement(
+  void _abrirPaginaInicial(BuildContext context) {
+    Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(
-        builder: (_) => InicioPage(),
-      ),
+      MaterialPageRoute(builder: (context) => HomePage()),
+          (route) => false,
     );
   }
 
-  Future<void> _confirmarLogout() async {
-    return showDialog(
+  void _confirmarLogout(BuildContext context) {
+    showDialog(
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
@@ -127,19 +93,25 @@ class _HomePageState extends State<HomePage> {
           content: Text('Depois disso, você será deslogado'),
           actions: [
             TextButton(
-              onPressed: (){
-                Navigator.pop(context);
-              },
+              onPressed: () => Navigator.pop(context),
               child: Text('Cancelar'),
             ),
             TextButton(
-              onPressed: (){
-                logout();
-              },
-              child: Text('Sair'),),
+              onPressed: () => _logout(context),
+              child: Text('Sair'),
+            ),
           ],
         );
       },
+    );
+  }
+
+  void _logout(BuildContext context) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.clear();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => InicioPage()),
     );
   }
 }

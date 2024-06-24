@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HistoricoMedico extends StatefulWidget {
-  const HistoricoMedico({super.key});
+class HistoricoMedicoPage extends StatefulWidget {
+  const HistoricoMedicoPage({Key? key}) : super(key: key);
 
   @override
-  State<HistoricoMedico> createState() => _HistoricoMedicoState();
+  _HistoricoMedicoPageState createState() => _HistoricoMedicoPageState();
 }
 
-class _HistoricoMedicoState extends State<HistoricoMedico> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-          child: Text('Histórico Médico pai'),
-        )
-class HistoricoMedicoPage extends StatelessWidget {
+class _HistoricoMedicoPageState extends State<HistoricoMedicoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
