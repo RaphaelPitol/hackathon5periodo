@@ -1,4 +1,5 @@
 import 'package:app_flutter/config.dart';
+import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,19 +37,8 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.vaccines_outlined, color: Colors.white, size: 40),
-                SizedBox(width: 8),
-                Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Text('Bem Vindo, $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
-          ],
+        title: Container(
+          child: BarraTitulo(),
         ),
         backgroundColor: Colors.blueAccent.shade700,
         elevation: 5,

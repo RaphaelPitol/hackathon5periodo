@@ -1,3 +1,4 @@
+import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:flutter/material.dart';
 
 class HistoricoMedicoPage extends StatefulWidget {
@@ -12,7 +13,12 @@ class _HistoricoMedicoPageState extends State<HistoricoMedicoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Histórico Médico'),
+        title: Container(
+          child: BarraTitulo(),
+        ),
+        backgroundColor: Colors.blueAccent.shade700,
+        elevation: 5,
+        shadowColor: Colors.black45,
       ),
       body: Center(
         child: Text('Conteúdo do Histórico Médico'),
