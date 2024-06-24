@@ -13,7 +13,12 @@ class IdosoController extends Controller
      */
     public function index()
     {
-        //
+       $idosos = Idoso::all();
+
+        return response()->json([
+            "menssagem" => "Todos Idosos",
+            "idosos" => $idosos
+        ]);
     }
 
     /**
