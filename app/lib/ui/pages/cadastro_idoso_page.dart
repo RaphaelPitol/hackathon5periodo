@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app_flutter/config.dart';
+import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,7 +27,12 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastrar Idoso'),
+        title: Container(
+          child: BarraTitulo(),
+        ),
+        backgroundColor: Colors.blueAccent.shade700,
+        elevation: 5,
+        shadowColor: Colors.black45,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -35,6 +41,7 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const Text("Cadastro de Idoso", style: TextStyle(fontSize: 20),),
                 const SizedBox(height: 10),
                 TextFormField(
                   decoration: const InputDecoration(
