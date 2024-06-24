@@ -68,10 +68,7 @@ class _HomePageState extends State<HomePage> {
         drawer: MenuLateral(listaItens: listaMenu),
         body: Column(
           children: [
-<<<<<<< HEAD
             Text("Nome do Responsavel: "+ responsavel_nome)
-=======
-            Text('TESTEEEEEEEEE')
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,8 +92,6 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text('Vacinas Pendentes'),
             ),
-
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
           ],
         ),
       ),

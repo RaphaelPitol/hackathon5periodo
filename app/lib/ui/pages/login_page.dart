@@ -1,21 +1,17 @@
-<<<<<<< HEAD
-import 'dart:convert';
-
-=======
 
 import 'dart:convert';
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
+
 import 'package:app_flutter/config.dart';
 import 'package:app_flutter/ui/pages/cadastro_usuario_page.dart';
 import 'package:app_flutter/ui/pages/home_page.dart';
 import 'package:app_flutter/ui/widgets/campo_texto_cpf.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-<<<<<<< HEAD
+
 import 'package:shared_preferences/shared_preferences.dart';
-=======
+
 import 'cadastrar_usuario_page.dart';
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -67,23 +63,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
+
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Center(
           child: Image(
             image: NetworkImage("https://www.alfaumuarama.edu.br/fau/images/logo_novo.png?v=1719030877"),
             width: 400,
-=======
-
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: const Center(
-            child: Image(
-              image: NetworkImage("https://www.alfaumuarama.edu.br/fau/images/logo_novo.png?v=1719030877"),
-              width: 400,
-            ),
->>>>>>> 346aafdf4d390b630228cfcf8bb64e0d95963f25
           ),
         ),
         elevation: 0,
@@ -185,8 +171,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-<<<<<<< HEAD
-=======
+
         )
       body: Form(
         key: _formKey,
