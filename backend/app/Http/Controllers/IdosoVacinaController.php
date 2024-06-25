@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\IdosoVacina;
+use App\Models\Vacina;
 use Illuminate\Http\Request;
 
 class IdosoVacinaController extends Controller
@@ -83,6 +84,32 @@ class IdosoVacinaController extends Controller
         ]);
         //
     }
+
+    public function shownaovacinado(string $id)
+{
+
+    $todasVacinas = Vacina::all();
+
+    $vacinasTomadas = IdosoVacina::with('vacina')
+                                 ->where('idoso_id', $id)
+                                 ->get()
+                                 ->pluck('vacina_id')
+                                 ->toArray();
+
+    $vacinasNaoTomadas = $todasVacinas->filter(function ($vacina) use ($vacinasTomadas) {
+        return !in_array($vacina->id, $vacinasTomadas);
+    });
+
+
+    $response = $vacinasNaoTomadas->map(function ($vacina) {
+        return $vacina->nome;
+    });
+
+    return response()->json([
+        "vacinas_nao_tomadas" => $response
+    ]);
+}
+
 
     /**
      * Show the form for editing the specified resource.

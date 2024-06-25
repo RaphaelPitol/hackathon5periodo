@@ -39,3 +39,4 @@ Route::get('/getidososrespo/{id}', [IdosoController::class, 'getIdosoResponsavel
 Route::get('/listidosos', [IdosoController::class, 'index']);
 Route::get('/idosovacina', [IdosoVacinaController::class, 'index']);
 Route::get('/showvacinado/{id}', [IdosoVacinaController::class, 'showvacinado']);
+Route::get('/shownaovacinado/{id}', [IdosoVacinaController::class, 'shownaovacinado']);
