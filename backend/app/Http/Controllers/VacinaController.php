@@ -62,7 +62,24 @@ class VacinaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $vacina = Vacina::find($id);
+
+        if (!$vacina) {
+            return response()->json([
+                "mensagem" => "Erro ao Buscar!"
+            ]);
+        }
+
+        $vacina->nome = $request->nome;
+        $vacina->marca = $request->marca;
+        $vacina->descricao = $request->descricao;
+        $vacina->validade = $request->validade;
+
+        $vacina->save();
+
+        return response()->json([
+            "mensagem" => "Salvo com sucesso"
+        ]);
     }
 
     /**
@@ -70,6 +87,21 @@ class VacinaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $vacina = Vacina::where('id', $id)->first();
+
+        if (!$vacina) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($vacina->id) {
+            Vacina::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
     }
 }
