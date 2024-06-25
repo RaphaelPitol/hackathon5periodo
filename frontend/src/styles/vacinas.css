@@ -1,0 +1,40 @@
+.vacinas-container {
+    padding: 20px;
+  }
+  
+  .vacinas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .vacina-card {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vacina-card.pendente {
+    background-color: #ffcccc;
+  }
+  
+  .vacina-card.confirmada {
+    background-color: #ccffcc;
+  }
+  
+  .vacina-card button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vacina-card button:hover {
+    background-color: #0056b3;
+  }
+  
