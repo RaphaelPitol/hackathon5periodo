@@ -62,7 +62,8 @@ class IdosoController extends Controller
    
     public function getIdosoResponsavel(string $id)
     {
-        $idosos = Idoso::all()->where('responsavel_id', $id);
+      $idosos = Idoso::all()->where('responsavel_id', $id);
+      error_log($idosos);
 
         if (!$idosos) {
             return response()->json([
