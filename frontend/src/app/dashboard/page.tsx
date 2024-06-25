@@ -1,4 +1,4 @@
-import { LayoutDashboard } from "@/componentes/LayoutDashboard";
+import { LayoutDashboard } from "@/app/componentes/LayoutDashboard";
 import { verificaTokenExpirado } from "@/services/token";
 import { cookies } from 'next/headers';
 import { redirect } from "next/navigation";
@@ -24,27 +24,24 @@ export default function Dashboard() {
     const token = cookie.get('painel1pitchau.token');
 
     if (!token?.value || verificaTokenExpirado(token.value)) {
-        redirect('/login');
+        redirect('./pages/index');
     }
 
-    let nome = '';
-    let id = 0
+    let id = '';
 
     if (token?.value) {
         try {
             const decodedToken = jwt.decode(token.value) as unknown as DecodedToken;
-            nome = decodedToken?.sub?.nome || '';
-            id = decodedToken?.sub?.id || 0 ;
+            id = decodedToken?.sub?.id.toString() || '';
         } catch (error) {
             console.error("Token decoding failed:", error);
-            redirect('/login');
+            redirect('./pages/index');
         }
     }
 
     return (
         <LayoutDashboard token={token.value}>
-            <h1>Nome: {nome}</h1> 
-            <h1>Id: {id}</h1>
+            <h1>ID: {id}</h1> 
         </LayoutDashboard>
     );
 }
