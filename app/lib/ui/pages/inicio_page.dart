@@ -1,10 +1,11 @@
-import 'package:app_flutter/ui/pages/home_page.dart';
-import 'package:app_flutter/ui/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'home_page.dart';
+import 'login_page.dart';
+
 class InicioPage extends StatefulWidget {
-  const InicioPage({super.key});
+  const InicioPage({Key? key}) : super(key: key);
 
   @override
   State<InicioPage> createState() => _InicioPageState();
@@ -14,15 +15,10 @@ class _InicioPageState extends State<InicioPage> {
   @override
   void initState() {
     super.initState();
-    verificarToken().then((value) {
-      if (value) {
-        Navigator.pushReplacementNamed(context, '/home');
-      } else {
-        Navigator.pushReplacementNamed(context, '/login');
-      }
-    });
+    verificarUsuarioLogado();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -31,8 +27,20 @@ class _InicioPageState extends State<InicioPage> {
     );
   }
 
-  Future<bool> verificarToken() async {
+  verificarUsuarioLogado() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    if (sharedPreferences.getString('token') != null) {
-      return true;
-    } else
+
+    String? token = sharedPreferences.getString('token');
+    if (token == null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => LoginPage()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomePage()),
+      );
+    }
+  }
+}

@@ -2,6 +2,8 @@ import 'package:app_flutter/config.dart'; // Importe o arquivo config.dart
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../models/usuario.dart';
+
 class UsuarioRepository {
   Future<bool> cadastrarUsuario(Usuario usuario) async {
     var url = Uri.parse('$linkApi/cadastrar_usuario');
