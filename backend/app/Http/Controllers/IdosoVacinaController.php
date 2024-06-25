@@ -59,8 +59,28 @@ class IdosoVacinaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showvacinado(string $id)
     {
+        $vacinado = IdosoVacina::with(['idoso', 'vacina', 'agente'])->where('idoso_id', $id)->get();
+
+        // dd($vacinado);
+
+        $response = $vacinado->map(function ($idosoVacinado) {
+            return [
+                // 'id' => $idosoVacinado->id,
+                'idoso' => $idosoVacinado->idoso->nome, 
+                'vacina' => $idosoVacinado->vacina->nome, 
+                'data_vacinacao' => $idosoVacinado->data_vacinacao,
+                // 'agente' => $idosoVacinado->agente->nome, 
+                // 'created_at' => $idosoVacinado->created_at,
+                // 'updated_at' => $idosoVacinado->updated_at,
+            ];
+        });
+    
+
+        return response()->json([
+            "vacinado" => $response
+        ]);
         //
     }
 
