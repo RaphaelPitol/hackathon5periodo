@@ -55,11 +55,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Center(
-          child: Image(
-            image: NetworkImage("https://www.alfaumuarama.edu.br/fau/images/logo_novo.png?v=1719030877"),
-            width: 400,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+          ],
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -84,6 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const Icon(Icons.vaccines_outlined, color: Colors.white, size: 100),
                   const SizedBox(
                     height: 30,
                     child: Text(
