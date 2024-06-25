@@ -30,7 +30,9 @@ Route::get('/show/{id}', [IdosoController::class, 'show']);
 Route::post('/loginagente', [AgenteSaudeController::class, 'login']);
 Route::post('/createagente', [AgenteSaudeController::class, 'create']);
 
+Route::get('/indexagenda', [AgendamentoController::class, 'index']);
 Route::post('/createagendamento', [AgendamentoController::class, 'create']);
+Route::put('/updateagendamento/{id}', [AgendamentoController::class, 'update']);
 
 Route::get('/listidosos', [IdosoController::class, 'index']);
 Route::post('/createidoso', [IdosoController::class, 'create']);
