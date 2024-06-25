@@ -17,7 +17,7 @@ class BarraTitulo extends StatelessWidget {
               Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
             ],
           ),
-          Text('Bem Vindo, $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
+          Text('Bem Vindo $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
         ],
       ),
     );

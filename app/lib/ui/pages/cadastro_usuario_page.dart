@@ -36,7 +36,7 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Text("Cadastro de Responsavel", style: TextStyle(fontSize: 20),),
+                const Text("Cadastro de Responsável", style: TextStyle(fontSize: 20),),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: 'CPF',
