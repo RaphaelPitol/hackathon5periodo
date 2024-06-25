@@ -37,3 +37,4 @@ Route::put('/updateidoso/{id}', [IdosoController::class, 'update']);
 Route::delete('/deleteidoso/{id}' , [IdosoController::class, 'destroy']);
 Route::get('/getidososrespo/{id}', [IdosoController::class, 'getIdosoResponsavel']);
 Route::get('/listidosos', [IdosoController::class, 'index']);
+Route::get('/idosovacina', [IdosoVacinaController::class, 'index']);

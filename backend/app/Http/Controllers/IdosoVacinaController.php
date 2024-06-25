@@ -12,7 +12,24 @@ class IdosoVacinaController extends Controller
      */
     public function index()
     {
-        //
+      $idososVacinados = IdosoVacina::with(['idoso', 'vacina', 'agente'])->get();
+
+    $response = $idososVacinados->map(function ($idosoVacinado) {
+        return [
+            'id' => $idosoVacinado->id,
+            'idoso' => $idosoVacinado->idoso->nome, 
+            'vacina' => $idosoVacinado->vacina->nome, 
+            'data_vacinacao' => $idosoVacinado->data_vacinacao,
+            'agente' => $idosoVacinado->agente->nome, 
+            'created_at' => $idosoVacinado->created_at,
+            'updated_at' => $idosoVacinado->updated_at,
+        ];
+    });
+
+    return response()->json([
+        'mensagem' => 'Idosos Vacinados',
+        'idosoVacinado' => $response
+    ]);
     }
 
     /**

@@ -17,4 +17,21 @@ class IdosoVacina extends Model
         'data_vacinacao',
         'agente_id'
     ];
+
+    public function idoso()
+    {
+        return $this->belongsTo(Idoso::class);
+    }
+
+    // Defina a relação com o modelo Vacina
+    public function vacina()
+    {
+        return $this->belongsTo(Vacina::class);
+    }
+
+    // Defina a relação com o modelo Agente
+    public function agente()
+    {
+        return $this->belongsTo(Agente::class);
+    }
 }
