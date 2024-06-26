@@ -1,3 +1,5 @@
+import 'package:app_flutter/ui/pages/dados_usuario_page.dart';
+import 'package:app_flutter/ui/pages/vacinas_pendentes_page.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:app_flutter/ui/widgets/carrosel_home.dart';
 import 'package:flutter/material.dart';
@@ -17,46 +19,64 @@ import '../widgets/menu_lateral.dart';
 }
 
   class _HomePageState extends State<HomePage> {
-    final PageController _pageController = PageController(viewportFraction: 0.8);
+    final PageController _pageController = PageController(
+        viewportFraction: 0.8);
 
     int _currentPage = 0;
 
     var _listSlide = [
-      {'id': 0, 'img':'assets/img/imagem1.jpg','cor': Colors.brown[100], 'titulo':'','texto':
-      'De acordo com o Ministério da Saúde, apenas 62% dos idosos '
-          'tomaram a vacina da gripe neste ano; '
-          'enquanto pouco mais de 12 milhões de pessoas '
-          'acima de 60 anos tomaram a dose de reforço da '
-          'vacina bivalente contra a Covid-19 – para efeito comparativo, '
-          '30 milhões de idosos receberam a primeira dose da vacina no '
-          'ápice da pandemia.'},
-      {'id': 1, 'img':'assets/img/imagem2.jpg', 'cor': Colors.brown[200], 'titulo':'Calendário vacinal do idoso:'
-        ,'texto': 'vacinas impulsionam a longevidade e o bem-estar da população acima de 60 anos\n'
-          'Dupla adulto, Influenza e Covid-19 estão entre os imunizantes recomendados aos mais velhos;\n'
-          'Dia Internacional da Pessoa Idosa é oportunidade para reforçar a relevância do produto, '
-          'que também impede a evolução de quadros mais graves das doenças.'},
+      {
+        'id': 0,
+        'img': 'assets/img/imagem1.jpg',
+        'cor': Colors.brown[100],
+        'titulo': '',
+        'texto':
+        'De acordo com o Ministério da Saúde, apenas 62% dos idosos '
+            'tomaram a vacina da gripe neste ano; '
+            'enquanto pouco mais de 12 milhões de pessoas '
+            'acima de 60 anos tomaram a dose de reforço da '
+            'vacina bivalente contra a Covid-19 – para efeito comparativo, '
+            '30 milhões de idosos receberam a primeira dose da vacina no '
+            'ápice da pandemia.'
+      },
+      {
+        'id': 1,
+        'img': 'assets/img/imagem2.jpg',
+        'cor': Colors.brown[200],
+        'titulo': 'Calendário vacinal do idoso:'
+        ,
+        'texto': 'vacinas impulsionam a longevidade e o bem-estar da população acima de 60 anos\n'
+            'Dupla adulto, Influenza e Covid-19 estão entre os imunizantes recomendados aos mais velhos;\n'
+            'Dia Internacional da Pessoa Idosa é oportunidade para reforçar a relevância do produto, '
+            'que também impede a evolução de quadros mais graves das doenças.'
+      },
 
-      {'id': 2, 'img':'assets/img/imagem3.jpg','cor': Colors.brown[100], 'titulo':'Confira o Calendário de Vacinação para Idosos',
+      {
+        'id': 2,
+        'img': 'assets/img/imagem3.jpg',
+        'cor': Colors.brown[100],
+        'titulo': 'Confira o Calendário de Vacinação para Idosos',
         'texto': 'Idosos (A partir dos 60 anos)\n'
-          'Hepatite B - Três doses\n'
-          'Febre amarela – Dose única, verificar situação vacinal\n'
-          'Tríplice viral – Se nunca vacinado: 2 doses (20 a 29 anos) e 1 dose (30 a 49 anos)\n'
-          'Dupla adulto (DT) – Reforço a cada 10 anos\n'
-          'Pneumocócica 23 Valente – Dose única\n'},
+            'Hepatite B - Três doses\n'
+            'Febre amarela – Dose única, verificar situação vacinal\n'
+            'Tríplice viral – Se nunca vacinado: 2 doses (20 a 29 anos) e 1 dose (30 a 49 anos)\n'
+            'Dupla adulto (DT) – Reforço a cada 10 anos\n'
+            'Pneumocócica 23 Valente – Dose única\n'
+      },
     ];
 
-  @override
-  void initState() {
-    _pageController.addListener(() {
-      int next = _pageController.page?.round() ?? 0;
-      if (_currentPage != next) {
-        setState(() {
-          _currentPage = next;
-        });
-      }
-    });
-    super.initState();
-  }
+    @override
+    void initState() {
+      _pageController.addListener(() {
+        int next = _pageController.page?.round() ?? 0;
+        if (_currentPage != next) {
+          setState(() {
+            _currentPage = next;
+          });
+        }
+      });
+      super.initState();
+    }
 
     void _abrirHistoricoMedico(BuildContext context) {
       Navigator.push(
@@ -72,19 +92,51 @@ import '../widgets/menu_lateral.dart';
       );
     }
 
+    void _abrirDadosUsuario(BuildContext context) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DadosUsuario()),
+      );
+    }
+    void _abrirPaginaInicial(BuildContext context) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+            (route) => false,
+      );
+    }
+
+    void _abrirVacinasPendentes(BuildContext context) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => VacinasPendentesPage()),
+          (route) => false,
+      );
+    }
+
     @override
     Widget build(BuildContext context) {
       List<Map> listaMenu = [
-        {"Texto": "Página Inicial", "Clique": () => _abrirPaginaInicial(context)},
-        {"Texto": "Cadastrar Idoso", "Clique": () => _abrirCadastroIdoso(context)},
-        {"Texto": "Histórico Médico", "Clique": () => _abrirHistoricoMedico(context)},
-        {"Texto": "Vacinas Pendentes", "Clique": () {} },
+        {"Texto": "Usuário", "Clique": () => _abrirDadosUsuario(context)},
+        {
+          "Texto": "Página Inicial",
+          "Clique": () => _abrirPaginaInicial(context)
+        },
+        {
+          "Texto": "Cadastrar Idoso",
+          "Clique": () => _abrirCadastroIdoso(context)
+        },
+        {
+          "Texto": "Histórico Médico",
+          "Clique": () => _abrirHistoricoMedico(context)
+        },
+        {"Texto": "Vacinas Pendentes", "Clique": () => _abrirVacinasPendentes(context)},
         {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
       ];
 
       return Scaffold(
         appBar: AppBar(
-          title:  Container(
+          title: Container(
             child: BarraTitulo(),
           ),
           backgroundColor: Colors.blueAccent.shade700,
@@ -95,18 +147,18 @@ import '../widgets/menu_lateral.dart';
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget> [
+            children: <Widget>[
               Expanded(
                 child: PageView.builder(
                     controller: _pageController,
                     itemCount: _listSlide.length,
-                    itemBuilder: (_ , currentIndex) {
+                    itemBuilder: (_, currentIndex) {
                       bool activePage = currentIndex == _currentPage;
                       return CarroselHome(
                         activePage: activePage,
                         titulo: _listSlide[currentIndex]['titulo'] as String,
                         img: _listSlide[currentIndex]['img'] as String? ?? '',
-                        cor:  _listSlide[currentIndex]['cor'] as Color,
+                        cor: _listSlide[currentIndex]['cor'] as Color,
                         texto: _listSlide[currentIndex]['texto'] as String,
                       );
                     }
@@ -123,39 +175,31 @@ import '../widgets/menu_lateral.dart';
       return Padding(
         padding: EdgeInsets.all(8),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: _listSlide.map((i) {
-              return InkWell(
-                onTap: (){
-                  setState(() {
-                    _pageController.jumpToPage(i['id'] as int);
-                    _currentPage = i['id'] as int;
-                  });
-                },
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: _listSlide.map((i) {
+            return InkWell(
+              onTap: () {
+                setState(() {
+                  _pageController.jumpToPage(i['id'] as int);
+                  _currentPage = i['id'] as int;
+                });
+              },
               child:
-                Container(
+              Container(
                 margin: EdgeInsets.all(10),
                 width: 10,
-                  height: 10,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                          color: _currentPage == i['id'] ? Colors.red : Colors.grey,
-                    ),
+                height: 10,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: _currentPage == i['id'] ? Colors.red : Colors.grey,
                 ),
-              );
-            }).toList(),
+              ),
+            );
+          }).toList(),
         ),
       );
-      }
     }
-
-    void _abrirPaginaInicial(BuildContext context) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-            (route) => false,
-      );
-    }
+  }
 
     void _confirmarLogout(BuildContext context) {
       showDialog(

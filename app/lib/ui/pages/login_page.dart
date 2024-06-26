@@ -194,9 +194,10 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       var userData = jsonDecode(response.body);
 
-     
       responsavel_nome = userData["responsavel"]["nome"];
       responsavel_id = userData["responsavel"]["id"];
+      responsavel_telefone = userData["responsavel"]["telefone"];
+      responsavel_cpf = userData["responsavel"]["cpf"];
 
       // Salvar o token no SharedPreferences
       var prefs = await SharedPreferences.getInstance();
