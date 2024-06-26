@@ -59,6 +59,8 @@ class ResponsavelController extends Controller
 
     public function create(Request $request)
     {
+
+      error_log($request);
         $responsavel = new Responsavel();
         $responsavel->nome = $request->nome;
         $responsavel->telefone = $request->telefone;
