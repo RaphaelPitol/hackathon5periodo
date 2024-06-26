@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:app_flutter/config.dart';
+import 'package:app_flutter/ui/pages/idoso_detalhe_page.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -40,6 +41,15 @@ class _HistoricoMedicoPageState extends State<HistoricoMedicoPage> {
     }
   }
 
+  void _navigateToDetails(Map<String, dynamic> idoso) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => IdosoDetailPage(idoso: idoso),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +82,7 @@ class _HistoricoMedicoPageState extends State<HistoricoMedicoPage> {
                   ),
                 ),
                 subtitle: Text('Comorbidade: ${idoso['comorbidade']}'),
+                onTap: () => _navigateToDetails(idoso),
               ),
             );
           },
@@ -80,3 +91,4 @@ class _HistoricoMedicoPageState extends State<HistoricoMedicoPage> {
     );
   }
 }
+
