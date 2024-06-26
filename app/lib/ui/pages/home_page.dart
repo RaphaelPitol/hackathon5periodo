@@ -113,7 +113,7 @@ import '../widgets/menu_lateral.dart';
       );
     }
 
-    void _abrirVacinasPendentes(BuildContext context) {
+    void _abrirDetalhesVacinas(BuildContext context) {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => VacinasPendentesPage()),
@@ -138,7 +138,10 @@ import '../widgets/menu_lateral.dart';
           "Texto": "Histórico Médico",
           "Clique": () => _abrirHistoricoMedico(context)
         },
-        {"Texto": "Vacinas Pendentes", "Clique": () => _abrirVacinasPendentes(context)},
+        {
+          "Texto": "Detalhes das Vacinas",
+          "Clique": () => _abrirDetalhesVacinas(context)
+        },
 
         {"Texto": "Agendar Visita", "Clique": () => _abrirAgendarVisita(context)},
 

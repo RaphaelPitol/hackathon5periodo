@@ -16,24 +16,8 @@ class BarraTitulo extends StatelessWidget {
               Icon(Icons.vaccines_outlined, color: Colors.white, size: 40),
               SizedBox(width: 8),
               Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
-              Padding(
-
-                padding: EdgeInsets.only(left: 50),
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (_) => DadosUsuario()),
-                  );
-                },
-                  child: Icon(
-                      Icons.person_2_outlined,
-                      color: Colors.white,
-                      size: 30)
-                  ),)
               ],
           ),
-          Text('Bem Vindo $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
         ],
       ),
     );
