@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:app_flutter/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'cadastro_usuario_page.dart';
@@ -14,6 +15,8 @@ class LoginPage extends StatefulWidget {
 
   @override
   _LoginPageState createState() => _LoginPageState();
+
+
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -52,10 +55,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -94,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 20.0),
+
                     child: CampoCPF(
                       campo: 'CPF',
                       label: 'Digite seu CPF',
@@ -103,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                       tipo: false,
                     ),
                   ),
+
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 20.0),
                     child: CampoCPF(
@@ -212,3 +218,4 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
+

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:app_flutter/config.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class CadastrarUsuarioPage extends StatefulWidget {
   const CadastrarUsuarioPage({super.key});
 
@@ -18,6 +19,8 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
   final _telefoneController = TextEditingController();
   final _senhaController = TextEditingController();
 
+  var maskCpf = MaskTextInputFormatter(mask: "###.###.###-##");
+  var maskFone = MaskTextInputFormatter(mask: "(##) # ####-####");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +41,7 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
               children: [
                 const Text("Cadastro de Responsável", style: TextStyle(fontSize: 20),),
                 TextFormField(
+                  inputFormatters: [maskCpf],
                   decoration: const InputDecoration(
                     labelText: 'CPF',
                     hintText: '000.000.000-00',
@@ -70,6 +74,7 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  inputFormatters: [maskFone],
                   decoration: const InputDecoration(
                     labelText: 'Telefone',
                     hintText: 'Digite seu telefone',
@@ -141,7 +146,7 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
       }),
       headers: {'Content-Type': 'application/json'},
     );
-
+    
     return response.statusCode == 200; // Sucesso no cadastro
   }
 }

@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.2.3
   ionicons: ^0.2.2
   intl: ^0.17.0
+  mask_text_input_formatter: ^2.9.0
 
 
 dev_dependencies:
