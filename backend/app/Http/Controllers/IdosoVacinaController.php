@@ -41,12 +41,19 @@ class IdosoVacinaController extends Controller
         //
         $idosoVacina = $request->except('_token');
 
-        IdosoVacina::create($idosoVacina);
-
-        return response()->json([
-            "mensagem" => "Vacinado com sucessso",
-            "idoso" => $idosoVacina
-        ], 201);
+        try {
+          IdosoVacina::create($idosoVacina);
+  
+          return response()->json([
+              "mensagem" => "Vacinado com sucessso",
+              "idoso" => $idosoVacina
+          ], 201);
+          //code...
+        } catch (\Throwable $th) {
+          return response()->json([
+            "mensagem" => "Verifique se todos os dados estão corretos!",
+            "erro" => $th  ]);
+        }
     }
 
     /**
@@ -132,6 +139,21 @@ class IdosoVacinaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      $vacinacao = IdosoVacina::where('id', $id)->first();
+
+      if (!$vacinacao) {
+          return response()->json([
+              "menssagen" => "Não existe na Base de Dados!"
+          ]);
+      }
+    
+      if ($vacinacao->id) {
+        IdosoVacina::destroy($id);
+  
+          return response()->json([
+              "menssagen" => "Deletado com sucesso"
+          ]);
+      }
+
     }
 }

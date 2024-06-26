@@ -32,7 +32,7 @@ class AgendamentoController extends Controller
         $agendamento = Agendamento::create($request);
       } catch (\Throwable $th) {
         return response()->json([
-            'Erro' => 'Verifique a os dados informados!',
+            'Erro' => 'Verifique os dados informados!',
             "erro" => $th
           ]);
       }
@@ -101,6 +101,22 @@ class AgendamentoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      
+        $agenda = Agendamento::where('id', $id)->first();
+
+        if (!$agenda) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($agenda->id) {
+          Agendamento::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
     }
 }

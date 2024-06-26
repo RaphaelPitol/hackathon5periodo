@@ -192,6 +192,21 @@ class AgenteSaudeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      $agente = Agente::where('id', $id)->first();
+
+        if (!$agente) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($agente->id) {
+          Agente::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
     }
 }

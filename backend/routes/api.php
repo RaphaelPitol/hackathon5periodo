@@ -29,15 +29,18 @@ Route::get('/buscarespo/{id}', [ResponsavelController::class, 'show']);
 Route::post('/login', [ResponsavelController::class, 'login']);
 Route::post('/create', [ResponsavelController::class, 'create']);
 Route::put('/updaterespo/{id}', [ResponsavelController::class, 'update']);
+Route::delete('/deleterespo/{id}', [ResponsavelController::class, 'destroy']);
 
 Route::post('/loginagente', [AgenteSaudeController::class, 'login']);
 Route::get('/buscagente/{id}', [AgenteSaudeController::class, 'show']);
 Route::post('/createagente', [AgenteSaudeController::class, 'create']);
 Route::put('/updateagente/{id}', [AgenteSaudeController::class, 'update']);
+Route::delete('/deleteagente/{id}' , [AgenteSaudeController::class, 'destroy']);
 
 Route::get('/indexagenda', [AgendamentoController::class, 'index']);
 Route::post('/createagendamento', [AgendamentoController::class, 'create']);
 Route::put('/updateagendamento/{id}', [AgendamentoController::class, 'update']);
+Route::delete('/deleteagenda/{id}' , [AgendamentoController::class, 'destroy']);
 
 Route::get('/listidosos', [IdosoController::class, 'index']);
 Route::get('/show/{id}', [IdosoController::class, 'show']);
@@ -50,6 +53,7 @@ Route::post('/createvacinacao', [IdosoVacinaController::class, 'create']);
 Route::get('/idosovacina', [IdosoVacinaController::class, 'index']);
 Route::get('/showvacinado/{id}', [IdosoVacinaController::class, 'showvacinado']);
 Route::get('/shownaovacinado/{id}', [IdosoVacinaController::class, 'shownaovacinado']);
+Route::delete('/deletevacinacao/{id}' , [IdosoVacinaController::class, 'destroy']);
 
 Route::get('/index', [VacinaController::class, 'index']);
 Route::get('/buscavacina/{id}', [VacinaController::class, 'show']);

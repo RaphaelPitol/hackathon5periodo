@@ -168,5 +168,25 @@ class ResponsavelController extends Controller
 
     }
 
+    public function destroy(string $id)
+    {
+        $responsavel = Responsavel::where('id', $id)->first();
+
+        if (!$responsavel) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($responsavel->id) {
+            Responsavel::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
+    }
+
     
 }
