@@ -67,15 +67,15 @@ class IdosoVacinaController extends Controller
         // dd($vacinado);
 
         $response = $vacinado->map(function ($idosoVacinado) {
-            return [
+            return 
                 // 'id' => $idosoVacinado->id,
-                'idoso' => $idosoVacinado->idoso->nome, 
-                'vacina' => $idosoVacinado->vacina->nome, 
-                'data_vacinacao' => $idosoVacinado->data_vacinacao,
+                // 'idoso' => $idosoVacinado->idoso->nome, 
+                $idosoVacinado->vacina->nome 
+                // 'data_vacinacao' => $idosoVacinado->data_vacinacao,
                 // 'agente' => $idosoVacinado->agente->nome, 
                 // 'created_at' => $idosoVacinado->created_at,
                 // 'updated_at' => $idosoVacinado->updated_at,
-            ];
+            ;
         });
     
 
