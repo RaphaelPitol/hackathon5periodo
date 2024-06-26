@@ -46,7 +46,13 @@ class VacinaController extends Controller
      */
     public function show(string $id)
     {
-        //
+      $vacina = Vacina::find($id);
+
+      if(!$vacina){
+        return response()->json(["menssage" => "Nenhum registro encontrado!"]);
+      }
+
+      return response()->json([$vacina]);
     }
 
     /**

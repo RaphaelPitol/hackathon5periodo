@@ -12,7 +12,7 @@ class CarroselHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final double top = this.activePage ? 50: 150;
+    final double top = this.activePage ? 40 : 150;
     final double blur = this.activePage ? 30: 0;
     final double offset = this.activePage ? 20 : 0;
 
@@ -51,7 +51,7 @@ class CarroselHome extends StatelessWidget {
               child: Column(
                children: <Widget>[
                  Text(titulo,style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text(texto, style: TextStyle(fontSize: 15, letterSpacing: 1.5),),
+                  Text(texto, style: TextStyle(fontSize: 9, letterSpacing: 1.5),),
                ],
               )
             ),
