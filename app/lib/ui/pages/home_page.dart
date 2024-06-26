@@ -1,3 +1,7 @@
+
+import 'package:app_flutter/config.dart';
+import 'package:app_flutter/ui/pages/agendar_visita_page.dart';
+
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:app_flutter/ui/widgets/carrosel_home.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +47,18 @@ import '../widgets/menu_lateral.dart';
           'Tríplice viral – Se nunca vacinado: 2 doses (20 a 29 anos) e 1 dose (30 a 49 anos)\n'
           'Dupla adulto (DT) – Reforço a cada 10 anos\n'
           'Pneumocócica 23 Valente – Dose única\n'},
+
     ];
 
   @override
+
+  void _abrirAgendarVisita(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AgendarVisitaPage()),
+    );
+  }
+
   void initState() {
     _pageController.addListener(() {
       int next = _pageController.page?.round() ?? 0;
@@ -79,6 +92,7 @@ import '../widgets/menu_lateral.dart';
         {"Texto": "Cadastrar Idoso", "Clique": () => _abrirCadastroIdoso(context)},
         {"Texto": "Histórico Médico", "Clique": () => _abrirHistoricoMedico(context)},
         {"Texto": "Vacinas Pendentes", "Clique": () {} },
+        {"Texto": "Agendar Visita", "Clique": () => _abrirAgendarVisita(context)},
         {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
       ];
 
