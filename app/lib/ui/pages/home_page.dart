@@ -1,10 +1,11 @@
+
 import 'package:app_flutter/ui/pages/dados_usuario_page.dart';
 import 'package:app_flutter/ui/pages/vacinas_pendentes_page.dart';
+import 'package:app_flutter/ui/pages/agendar_visita_page.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:app_flutter/ui/widgets/carrosel_home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'cadastro_idoso_page.dart';
 import 'historico_medico_page.dart';
 import 'inicio_page.dart';
@@ -24,7 +25,7 @@ import '../widgets/menu_lateral.dart';
 
     int _currentPage = 0;
 
-    var _listSlide = [
+    final _listSlide = [
       {
         'id': 0,
         'img': 'assets/img/imagem1.jpg',
@@ -50,7 +51,6 @@ import '../widgets/menu_lateral.dart';
             'Dia Internacional da Pessoa Idosa é oportunidade para reforçar a relevância do produto, '
             'que também impede a evolução de quadros mais graves das doenças.'
       },
-
       {
         'id': 2,
         'img': 'assets/img/imagem3.jpg',
@@ -78,30 +78,37 @@ import '../widgets/menu_lateral.dart';
       super.initState();
     }
 
+    void _abrirAgendarVisita(BuildContext context) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AgendarVisitaPage()),
+      );
+    }
+
     void _abrirHistoricoMedico(BuildContext context) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HistoricoMedicoPage()),
+        MaterialPageRoute(builder: (context) => const HistoricoMedicoPage()),
       );
     }
 
     void _abrirCadastroIdoso(BuildContext context) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => CadastroIdosoPage()),
+        MaterialPageRoute(builder: (context) => const CadastroIdosoPage()),
       );
     }
 
     void _abrirDadosUsuario(BuildContext context) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => DadosUsuario()),
+        MaterialPageRoute(builder: (context) => const DadosUsuario()),
       );
     }
     void _abrirPaginaInicial(BuildContext context) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
             (route) => false,
       );
     }
@@ -117,6 +124,7 @@ import '../widgets/menu_lateral.dart';
     @override
     Widget build(BuildContext context) {
       List<Map> listaMenu = [
+
         {"Texto": "Usuário", "Clique": () => _abrirDadosUsuario(context)},
         {
           "Texto": "Página Inicial",
@@ -131,14 +139,15 @@ import '../widgets/menu_lateral.dart';
           "Clique": () => _abrirHistoricoMedico(context)
         },
         {"Texto": "Vacinas Pendentes", "Clique": () => _abrirVacinasPendentes(context)},
+
+        {"Texto": "Agendar Visita", "Clique": () => _abrirAgendarVisita(context)},
+
         {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
       ];
 
       return Scaffold(
         appBar: AppBar(
-          title: Container(
-            child: BarraTitulo(),
-          ),
+          title:  const BarraTitulo(),
           backgroundColor: Colors.blueAccent.shade700,
           elevation: 5,
           shadowColor: Colors.black45,
@@ -173,7 +182,7 @@ import '../widgets/menu_lateral.dart';
 
     Widget _buildBullets() {
       return Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: _listSlide.map((i) {
@@ -186,7 +195,7 @@ import '../widgets/menu_lateral.dart';
               },
               child:
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 width: 10,
                 height: 10,
                 decoration: BoxDecoration(
