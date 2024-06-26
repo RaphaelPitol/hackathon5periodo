@@ -1,26 +1,33 @@
+import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:app_flutter/config.dart';
-
 class CadastrarUsuarioPage extends StatefulWidget {
+  const CadastrarUsuarioPage({super.key});
+
   @override
-  _CadastrarUsuarioPageState createState() => _CadastrarUsuarioPageState();
+  State<CadastrarUsuarioPage> createState() => _CadastrarUsuarioPageState();
 }
 
 class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
+
   final _formKey = GlobalKey<FormState>();
   final _cpfController = TextEditingController();
   final _nomeController = TextEditingController();
   final _telefoneController = TextEditingController();
-  final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastrar Usuário'),
+        title: Container(
+
+        ),
+        backgroundColor: Colors.blueAccent.shade700,
+        elevation: 5,
+        shadowColor: Colors.black45,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -29,6 +36,7 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const Text("Cadastro de Responsavel", style: TextStyle(fontSize: 20),),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: 'CPF',
@@ -72,22 +80,6 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Preencha seu telefone';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'E-mail',
-                    hintText: 'Digite seu e-mail',
-                    border: OutlineInputBorder(),
-                  ),
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Preencha seu e-mail';
                     }
                     return null;
                   },
@@ -145,7 +137,6 @@ class _CadastrarUsuarioPageState extends State<CadastrarUsuarioPage> {
         'cpf': _cpfController.text,
         'nome': _nomeController.text,
         'telefone': _telefoneController.text,
-        'email': _emailController.text,
         'password': _senhaController.text,
       }),
       headers: {'Content-Type': 'application/json'},

@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1446426-35f6-4640-bb9e-4237b80feed8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/hackathon5periodo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hackathon5periodo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/ui/pages/agendar_visita_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/ui/pages/cadastro_idoso_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/ui/widgets/barra_titulo.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/ui/widgets/campo_texto_cpf.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/ui/widgets/menu_lateral.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/lib/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/lib/data/repositories/usuario_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/data/repositories/usuario_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/lib/ui/pages/inicio_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/ui/pages/inicio_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/data/repositories/usuario_repository.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/ui/pages/cadastrar_usuario_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/ui/pages/cadastro_usuario_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/ui/pages/historico_medico_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/ui/pages/historico_medico_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/ui/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/ui/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/ui/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/ui/pages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/IdosoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/IdosoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/dashboard/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +45,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,

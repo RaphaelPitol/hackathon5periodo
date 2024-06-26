@@ -28,11 +28,13 @@ export default function Dashboard() {
     }
 
     let nome = '';
+    let id = 0
 
     if (token?.value) {
         try {
             const decodedToken = jwt.decode(token.value) as unknown as DecodedToken;
             nome = decodedToken?.sub?.nome || '';
+            id = decodedToken?.sub?.id || 0 ;
         } catch (error) {
             console.error("Token decoding failed:", error);
             redirect('/login');
@@ -42,6 +44,7 @@ export default function Dashboard() {
     return (
         <LayoutDashboard token={token.value}>
             <h1>Nome: {nome}</h1> 
+            <h1>Id: {id}</h1>
         </LayoutDashboard>
     );
 }

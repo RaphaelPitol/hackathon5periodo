@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Idoso;
+use DateTime;
 use Illuminate\Http\Request;
 
 class IdosoController extends Controller
@@ -12,7 +13,12 @@ class IdosoController extends Controller
      */
     public function index()
     {
-        //
+       $idosos = Idoso::all();
+
+        return response()->json([
+            "menssagem" => "Todos Idosos",
+            "idosos" => $idosos
+        ]);
     }
 
     /**
@@ -20,14 +26,24 @@ class IdosoController extends Controller
      */
     public function create(Request $request)
     {
-        $request = $request->except('_token');
-        // dd($request);
-        
-        Idoso::create($request);
-
+      $data = new DateTime($request->data_nascimento);
+      
+      $idoso = new Idoso();
+      $idoso->nome = $request->nome;
+      $idoso->data_nascimento = $data->format('Y-m-d');
+      $idoso->telefone = $request->telefone;
+      $idoso->cep = $request->cep;
+      $idoso->cidade = $request->cidade;
+      $idoso->endereco = $request->endereco;
+      $idoso->numero = $request->numero;
+      $idoso->comorbidade = $request->comorbidade;
+      $idoso->responsavel_id = $request->responsavel_id;
+      $idoso->save();
+      // error_log($idoso);
+      
          return response()->json([
           'success' => 'Gravado com sucesso!',
-          'responsavel' => $request
+          'idoso' => $idoso
         ]);
     }
 
@@ -44,9 +60,23 @@ class IdosoController extends Controller
     }
 
    
-    public function edit(string $id)
+    public function getIdosoResponsavel(string $id)
     {
-        //
+        $idosos = Idoso::all()->where('responsavel_id', $id);
+
+        if (!$idosos) {
+            return response()->json([
+                "menssagen" => "Não existe Idosos para este Responsavel!"
+            ]);
+        }
+      
+     
+
+            return response()->json([
+                "menssagen" => "Lista de Idosos",
+                "idosos" => $idosos
+            ]);
+        
     }
 
     /**
@@ -54,7 +84,26 @@ class IdosoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       
+
+        $idoso = Idoso::find($id);
+
+        error_log($idoso);
+        $idoso->nome = $request->nome;
+        $idoso->data_nascimento = $request->data_nascimento;
+        $idoso->telefone = $request->telefone;
+        $idoso->cep = $request->cep;
+        $idoso->cidade = $request->cidade;
+        $idoso->endereco = $request->endereco;
+        $idoso->numero = $request->numero;
+        $idoso->comorbidade = $request->comorbidade;
+        $idoso->responsavel_id = $request->responsavel_id;
+
+        $idoso->save();
+
+        return response()->json([
+            "mensagem" => "Atualizado",
+            "idoso" => $idoso]);
     }
 
     /**
@@ -62,6 +111,24 @@ class IdosoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      
+       
+        $idoso = Idoso::where('id', $id)->first();
+
+        if (!$idoso) {
+            return response()->json([
+                "menssagen" => "Idosos Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($idoso->id) {
+            Idoso::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
+        
     }
 }
