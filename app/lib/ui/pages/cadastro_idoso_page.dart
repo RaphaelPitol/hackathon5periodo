@@ -4,6 +4,7 @@ import 'package:app_flutter/config.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CadastroIdosoPage extends StatefulWidget {
   const CadastroIdosoPage({super.key});
@@ -23,6 +24,7 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
   final _numeroController = TextEditingController();
   final _comorbidadesController = TextEditingController();
 
+  var maskDataNascimento = MaskTextInputFormatter(mask: "##-##-####");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +62,7 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  inputFormatters: [maskDataNascimento],
                   decoration: const InputDecoration(
                     labelText: 'Data de Nascimento',
                     hintText: 'DD/MM/AAAA',
