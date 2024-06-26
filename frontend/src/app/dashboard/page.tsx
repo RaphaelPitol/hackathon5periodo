@@ -21,7 +21,7 @@ interface DecodedToken {
 
 export default function Dashboard() {
     const cookie = cookies();
-    const token = cookie.get('painel1pitchau.token');
+    const token = cookie.get('hackathon.token');
 
     if (!token?.value || verificaTokenExpirado(token.value)) {
         redirect('./pages/index');
