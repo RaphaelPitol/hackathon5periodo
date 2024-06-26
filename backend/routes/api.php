@@ -23,18 +23,24 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/listrespo', [ResponsavelController::class, 'index']);
+Route::get('/buscarespo/{id}', [ResponsavelController::class, 'show']);
 Route::post('/login', [ResponsavelController::class, 'login']);
 Route::post('/create', [ResponsavelController::class, 'create']);
-Route::get('/show/{id}', [IdosoController::class, 'show']);
+Route::put('/updaterespo/{id}', [ResponsavelController::class, 'update']);
 
 Route::post('/loginagente', [AgenteSaudeController::class, 'login']);
+Route::get('/buscagente/{id}', [AgenteSaudeController::class, 'show']);
 Route::post('/createagente', [AgenteSaudeController::class, 'create']);
+Route::put('/updateagente/{id}', [AgenteSaudeController::class, 'update']);
 
 Route::get('/indexagenda', [AgendamentoController::class, 'index']);
 Route::post('/createagendamento', [AgendamentoController::class, 'create']);
 Route::put('/updateagendamento/{id}', [AgendamentoController::class, 'update']);
 
 Route::get('/listidosos', [IdosoController::class, 'index']);
+Route::get('/show/{id}', [IdosoController::class, 'show']);
 Route::post('/createidoso', [IdosoController::class, 'create']);
 Route::put('/updateidoso/{id}', [IdosoController::class, 'update']);
 Route::delete('/deleteidoso/{id}' , [IdosoController::class, 'destroy']);
@@ -46,6 +52,7 @@ Route::get('/showvacinado/{id}', [IdosoVacinaController::class, 'showvacinado'])
 Route::get('/shownaovacinado/{id}', [IdosoVacinaController::class, 'shownaovacinado']);
 
 Route::get('/index', [VacinaController::class, 'index']);
+Route::get('/buscavacina/{id}', [VacinaController::class, 'show']);
 Route::post('/createvacina', [VacinaController::class, 'create']);
 Route::put('/updatevacina/{id}', [VacinaController::class, 'update']);
 Route::delete('/deletevacina/{id}', [VacinaController::class, 'destroy']);
