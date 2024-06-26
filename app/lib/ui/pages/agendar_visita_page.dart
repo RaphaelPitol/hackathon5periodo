@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 const String linkApi = 'http://10.0.2.2:8000/api';
-var idoso_id = 1; // Defina o ID do idoso autenticado conforme necessário
+const idoso_id = 1; // Defina o ID do idoso autenticado conforme necessário
 
 class AgendarVisitaPage extends StatefulWidget {
   const AgendarVisitaPage({super.key});
@@ -45,7 +45,7 @@ class _AgendarVisitaPageState extends State<AgendarVisitaPage> {
         Navigator.pop(context); // Voltar à página inicial após sucesso
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Falha ao gravar o agendamento')),
+          const SnackBar(content: Text('Falha ao gravar o agendamento')),
         );
       }
     }
@@ -55,15 +55,16 @@ class _AgendarVisitaPageState extends State<AgendarVisitaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agendar Visita'),
+        title: const Text('Agendar Visita'),
         centerTitle: true,
       ),
       body: Container(
         child: Form(
           key: _formKey,
-          child: ListView(padding: EdgeInsets.all(10), children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+          child: ListView(
+              padding: const EdgeInsets.all(10), children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Card(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -78,12 +79,12 @@ class _AgendarVisitaPageState extends State<AgendarVisitaPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: dateController,
                 showCursor: true,
                 readOnly: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Data Prevista',
                   icon: Icon(Icons.today),
                 ),
@@ -111,12 +112,12 @@ class _AgendarVisitaPageState extends State<AgendarVisitaPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: timeController,
                 showCursor: true,
                 readOnly: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Hora Prevista',
                   icon: Icon(Icons.access_time),
                 ),
@@ -147,7 +148,7 @@ class _AgendarVisitaPageState extends State<AgendarVisitaPage> {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: _saveAgendamento,
-                child: Text('Salvar Agendamento'),
+                child: const Text('Salvar Agendamento'),
               ),
             ),
           ]),
@@ -158,7 +159,8 @@ class _AgendarVisitaPageState extends State<AgendarVisitaPage> {
 }
 
 void main() {
-  runApp(MaterialApp(
-    home: AgendarVisitaPage(),
+  runApp(
+      const MaterialApp(
+        home: AgendarVisitaPage(),
   ));
 }

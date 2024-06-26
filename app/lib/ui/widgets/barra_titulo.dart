@@ -1,4 +1,5 @@
 import 'package:app_flutter/config.dart';
+import 'package:app_flutter/ui/pages/dados_usuario_page.dart';
 import 'package:flutter/material.dart';
 
 class BarraTitulo extends StatelessWidget {
@@ -18,8 +19,18 @@ class BarraTitulo extends StatelessWidget {
               Padding(
 
                 padding: EdgeInsets.only(left: 50),
-              child: Icon(
-                  Icons.person_2_outlined, color: Colors.white, size: 30),)
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => DadosUsuario()),
+                  );
+                },
+                  child: Icon(
+                      Icons.person_2_outlined,
+                      color: Colors.white,
+                      size: 30)
+                  ),)
               ],
           ),
           Text('Bem Vindo $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
