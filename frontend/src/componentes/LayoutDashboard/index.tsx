@@ -17,7 +17,7 @@ export const LayoutDashboard = (props: Iprops) => {
 
      if (confirm("Deseja sair?") === true) {
          destroyCookie(undefined,
-          'painel1pitchau.token',)
+          'hackathon.token',)
           
           router.refresh();
           router.push('/login')

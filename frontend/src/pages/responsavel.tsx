@@ -24,7 +24,7 @@ const Responsavel: React.FC = () => {
 
   useEffect(() => {
     const cookies = parseCookies();
-    const token = cookies['painel1pitchau.token'];
+    const token = cookies['hackathon.token'];
 
     if (token) {
       try {
@@ -61,7 +61,7 @@ const Responsavel: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const cookies = parseCookies();
-    const token = cookies['painel1pitchau.token'];
+    const token = cookies['hackathon.token'];
     let decodedToken: any = null;
 
     if (token) {

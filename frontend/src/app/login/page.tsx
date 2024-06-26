@@ -20,7 +20,7 @@ export default function Login() {
 
     useEffect(() => {
         const cookies = parseCookies();
-        const token = cookies['painel1pitchau.token'];
+        const token = cookies['hackathon.token'];
         
         if (token) {
             try {
@@ -57,7 +57,7 @@ export default function Login() {
                     
                     setCookie(
                         undefined,
-                        'painel1pitchau.token',
+                        'hackathon.token',
                         res.data.token,
                         { path: '/' }
                     );
