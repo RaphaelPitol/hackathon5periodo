@@ -43,7 +43,7 @@ class CampoCPF extends StatelessWidget {
       keyboardType: teclado,
       validator: (valor) {
         if(valor == null || valor.isEmpty){
-          return error;
+          return "Preencha os Campos!";
         }
         return null;
       },
