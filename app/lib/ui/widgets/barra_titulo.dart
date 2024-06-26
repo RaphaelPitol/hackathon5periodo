@@ -14,10 +14,15 @@ class BarraTitulo extends StatelessWidget {
             children: [
               Icon(Icons.vaccines_outlined, color: Colors.white, size: 40),
               SizedBox(width: 8),
-              Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
-            ],
+              Text('Saúde Sênior', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+              Padding(
+
+                padding: EdgeInsets.only(left: 50),
+              child: Icon(
+                  Icons.person_2_outlined, color: Colors.white, size: 30),)
+              ],
           ),
-          Text('Bem Vindo, $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
+          Text('Bem Vindo $responsavel_nome', style: TextStyle(color: Colors.white, fontSize: 16)),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 {
-  "name": "painel-1pitchau",
+  "name": "Hanckathon-5-Periodo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,18 +11,23 @@
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.6",
-    "axios": "^1.6.8",
+    "@types/styled-components": "^5.1.34",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "js-cookie": "^3.0.5",
     "json-server": "^1.0.0-beta.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
-    "next": "14.2.3",
+    "next": "^14.2.3",
     "nookies": "^2.5.2",
-    "react": "^18",
+    "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
-    "react-dom": "^18"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -116,7 +116,13 @@ class AgenteSaudeController extends Controller
      */
     public function show(string $id)
     {
-        //
+      $agente = Agente::find($id);
+
+      if(!$agente){
+        return response()->json(["menssage" => "Nenhum registro encontrado!"]);
+      }
+
+      return response()->json([$agente]);
     }
 
     /**
@@ -132,7 +138,53 @@ class AgenteSaudeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $agente = Agente::find($id);
+        
+        $agente->nome = $request->nome;
+        $agente->telefone = $request->telefone;
+        $agente->cpf = $request->cpf;
+        $agente->password = Hash::make($request->password);
+
+        if (!is_numeric($agente->telefone)){
+          return response()->json(
+            [
+                "mensagem" => "Telefone deve conter somente numeros!"
+            ], 400
+        );
+        }
+          if(strlen($agente->telefone) > 11 || strlen($agente->telefone) < 10){
+            return response()->json(
+              [
+                  "mensagem" => "Telefone ser fixo ou Celular!"
+              ], 400
+          );
+
+          }
+
+
+        try {
+            $agente->save();
+            return response()->json(
+                [
+                    "mensagem" => "Agente cadastrado com sucesso",
+                    "agente" => $agente
+                ], 200
+            );
+        } catch (DatabaseQueryException $e) {
+            if ($e->errorInfo[1] == 1062) {
+                return response()->json(
+                    [
+                        "mensagem" => "CPF ja cadastrado"
+                    ], 400
+                );
+            } else {
+                return response()->json(
+                    [
+                        "mensagem" => "Erro ao cadastrar o responsável"
+                    ], 500
+                );
+            }
+        }
     }
 
     /**
@@ -140,6 +192,21 @@ class AgenteSaudeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      $agente = Agente::where('id', $id)->first();
+
+        if (!$agente) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($agente->id) {
+          Agente::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
     }
 }

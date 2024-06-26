@@ -62,7 +62,8 @@ class IdosoController extends Controller
    
     public function getIdosoResponsavel(string $id)
     {
-        $idosos = Idoso::all()->where('responsavel_id', $id);
+      $idosos = Idoso::all()->where('responsavel_id', $id);
+      
 
         if (!$idosos) {
             return response()->json([
@@ -88,7 +89,6 @@ class IdosoController extends Controller
 
         $idoso = Idoso::find($id);
 
-        error_log($idoso);
         $idoso->nome = $request->nome;
         $idoso->data_nascimento = $request->data_nascimento;
         $idoso->telefone = $request->telefone;

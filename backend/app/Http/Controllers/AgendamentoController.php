@@ -12,7 +12,12 @@ class AgendamentoController extends Controller
      */
     public function index()
     {
-        //
+        $agenda = Agendamento::all();
+
+        return response()->json([
+            "mensagem" => "Lista de Agendamentos",
+            "agenda" => $agenda
+        ]);
     }
 
     /**
@@ -22,11 +27,20 @@ class AgendamentoController extends Controller
     {
         $request = $request->except('_token');
 
-        Agendamento::create($request);
 
+      try {
+        $agendamento = Agendamento::create($request);
+      } catch (\Throwable $th) {
+        return response()->json([
+            'Erro' => 'Verifique os dados informados!',
+            "erro" => $th
+          ]);
+      }
+
+        
         return response()->json([
             'success' => 'Gravado com sucesso!',
-            'responsavel' => $request
+            'responsavel' => $agendamento
           ]);
     }
 
@@ -59,7 +73,27 @@ class AgendamentoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $agenda = Agendamento::find($id);
+            $agenda->data_hora = $request->data_hora;
+            $agenda->status = $request->status;
+            $agenda->idoso_id = $request->idoso_id;
+    
+            $agenda->save();
+    
+            return response()->json([
+                "mensagem" => "Atualizado"
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "mensagem" => "Erro ao editar",
+                "erro" => $th
+            ]);
+        }
+
+
+
+
     }
 
     /**
@@ -67,6 +101,22 @@ class AgendamentoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      
+        $agenda = Agendamento::where('id', $id)->first();
+
+        if (!$agenda) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($agenda->id) {
+          Agendamento::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
     }
 }

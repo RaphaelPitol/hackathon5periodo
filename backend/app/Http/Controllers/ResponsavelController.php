@@ -11,6 +11,16 @@ use Illuminate\Database\QueryException;
 class ResponsavelController extends Controller
 
 {
+  public function index(){
+
+    $responsaveis = Responsavel::all();
+
+    return response()->json([
+      "mensagem" => "Lista de Responsaveis",
+      "responsaveis" => $responsaveis
+    ]);
+      
+  }
 
   public function login(Request $request)
 {
@@ -95,4 +105,88 @@ class ResponsavelController extends Controller
             }
         }
     }
+
+    public function show(string $id)
+    {
+      $responsavel = Responsavel::find($id);
+
+      if(!$responsavel){
+        return response()->json(["menssage" => "Nenhum registro encontrado!"]);
+      }
+
+      return response()->json([$responsavel]);
+    }
+
+    public function update(Request $request, string $id) 
+    {
+      $responsavel = Responsavel::find($id);
+
+      $responsavel->nome = $request->nome;
+      $responsavel->telefone = $request->telefone;
+      $responsavel->cpf = $request->cpf;
+      $responsavel->password = Hash::make($request->password);
+
+      if (!is_numeric($responsavel->telefone)){
+        return response()->json(
+          [
+              "mensagem" => "Telefone deve conter somente numeros!"
+          ], 400
+      );
+      }
+        if(strlen($responsavel->telefone) > 11 || strlen($responsavel->telefone) < 10){
+          return response()->json(
+            [
+                "mensagem" => "Telefone ser fixo ou Celular!"
+            ], 400
+        );
+
+        }
+
+
+      try {
+          $responsavel->save();
+          return response()->json(
+              [
+                  "mensagem" => "Responsável cadastrado com sucesso"
+              ], 200
+          );
+      } catch (QueryException $e) {
+          if ($e->errorInfo[1] == 1062) {
+              return response()->json(
+                  [
+                      "mensagem" => "CPF duplicado: '05574916909'"
+                  ], 400
+              );
+          } else {
+              return response()->json(
+                  [
+                      "mensagem" => "Erro ao cadastrar o responsável"
+                  ], 500
+              );
+          }
+      }
+
+    }
+
+    public function destroy(string $id)
+    {
+        $responsavel = Responsavel::where('id', $id)->first();
+
+        if (!$responsavel) {
+            return response()->json([
+                "menssagen" => "Não existe na Base de Dados!"
+            ]);
+        }
+      
+        if ($responsavel->id) {
+            Responsavel::destroy($id);
+    
+            return response()->json([
+                "menssagen" => "Deletado com sucesso"
+            ]);
+        }
+
+    }
+
+    
 }
