@@ -21,13 +21,29 @@ class DadosUsuario extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                      Text('DadosUsuario'),
-                        Text('$responsavel_nome'),
-                          Text('$responsavel_telefone'),
-                            Text('$responsavel_cpf'),
-
-                  ],
+                children: [
+                  Card(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        ListTile(
+                          title: Text('$responsavel_nome', style: TextStyle(fontSize: 20),),
+                          leading: Text('Nome:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                        ),
+                        const Divider(color: Colors.black38, height: 1, thickness: 0, endIndent: 20,indent: 20,),
+                        ListTile(
+                          title: Text('$responsavel_cpf', style: TextStyle(fontSize: 20),),
+                          leading: Text('CPF:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                        ),
+                        const Divider(color: Colors.black38,height: 1, thickness: 0,endIndent: 20,indent: 20,),
+                        ListTile(
+                          title: Text('$responsavel_telefone', style: TextStyle(fontSize: 20),),
+                          leading: Text('Telefone:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
             )
         );
