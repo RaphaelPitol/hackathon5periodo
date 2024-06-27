@@ -78,46 +78,10 @@ import '../widgets/menu_lateral.dart';
       super.initState();
     }
 
-    void _abrirAgendarVisita(BuildContext context) {
+    void rotaPagina(BuildContext context, Widget destino) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const AgendarVisitaPage()),
-      );
-    }
-
-    void _abrirHistoricoMedico(BuildContext context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HistoricoMedicoPage()),
-      );
-    }
-
-    void _abrirCadastroIdoso(BuildContext context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const CadastroIdosoPage()),
-      );
-    }
-
-    void _abrirDadosUsuario(BuildContext context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const DadosUsuario()),
-      );
-    }
-    void _abrirPaginaInicial(BuildContext context) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false,
-      );
-    }
-
-    void _abrirDetalhesVacinas(BuildContext context) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => VacinasPendentesPage()),
-          (route) => false,
+        MaterialPageRoute(builder: (context) => destino),
       );
     }
 
@@ -125,25 +89,27 @@ import '../widgets/menu_lateral.dart';
     Widget build(BuildContext context) {
       List<Map> listaMenu = [
 
-        {"Texto": "Usuário", "Clique": () => _abrirDadosUsuario(context)},
+        {"Texto": "Usuário", "Clique": () => rotaPagina(context, const DadosUsuario())},
         {
           "Texto": "Página Inicial",
-          "Clique": () => _abrirPaginaInicial(context)
+          "Clique": () => rotaPagina(context, const InicioPage())
         },
         {
           "Texto": "Cadastrar Idoso",
-          "Clique": () => _abrirCadastroIdoso(context)
+          "Clique": () => rotaPagina(context, const CadastroIdosoPage())
         },
         {
           "Texto": "Histórico Médico",
-          "Clique": () => _abrirHistoricoMedico(context)
+          "Clique": () => rotaPagina(context, const HistoricoMedicoPage())
         },
         {
           "Texto": "Detalhes das Vacinas",
-          "Clique": () => _abrirDetalhesVacinas(context)
+          "Clique": () => rotaPagina(context, VacinasPendentesPage())
         },
-
-        {"Texto": "Agendar Visita", "Clique": () => _abrirAgendarVisita(context)},
+        {
+          "Texto": "Agendar Visita",
+          "Clique": () => rotaPagina(context, const  AgendarVisitaPage())
+        },
 
         {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
       ];
