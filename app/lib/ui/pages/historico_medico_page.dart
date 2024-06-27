@@ -28,9 +28,7 @@ class _HistoricoMedicoPageState extends State<HistoricoMedicoPage> {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       setState(() {
-        idosos = (data['idosos'] as Map<String, dynamic>).values.map((idoso) {
-          return idoso as Map<String, dynamic>;
-        }).toList();
+        idosos = List<Map<String, dynamic>>.from(data['idosos']);
         isLoading = false;
       });
     } else {

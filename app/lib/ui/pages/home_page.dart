@@ -1,7 +1,7 @@
 
 import 'package:app_flutter/ui/pages/dados_usuario_page.dart';
-import 'package:app_flutter/ui/pages/vacinas_pendentes_page.dart';
 import 'package:app_flutter/ui/pages/agendar_visita_page.dart';
+import 'package:app_flutter/ui/pages/vacina_page.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:app_flutter/ui/widgets/carrosel_home.dart';
 import 'package:flutter/material.dart';
@@ -81,9 +81,10 @@ import '../widgets/menu_lateral.dart';
     void rotaPagina(BuildContext context, Widget destino) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => destino),
+        MaterialPageRoute(builder: (context) =>  destino),
       );
     }
+
 
     @override
     Widget build(BuildContext context) {
@@ -102,14 +103,16 @@ import '../widgets/menu_lateral.dart';
           "Texto": "Histórico Médico",
           "Clique": () => rotaPagina(context, const HistoricoMedicoPage())
         },
+
         {
           "Texto": "Detalhes das Vacinas",
-          "Clique": () => rotaPagina(context, VacinasPendentesPage())
+          "Clique": () => rotaPagina(context, const  VacinaPage())
         },
-        {
-          "Texto": "Agendar Visita",
-          "Clique": () => rotaPagina(context, const  AgendarVisitaPage())
-        },
+
+
+        {"Texto": "Agendamentos", "Clique": () => rotaPagina(context, const AgendarVisitaPage())},
+
+
 
         {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
       ];

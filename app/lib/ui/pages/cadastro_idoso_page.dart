@@ -25,6 +25,8 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
   final _comorbidadesController = TextEditingController();
 
   var maskDataNascimento = MaskTextInputFormatter(mask: "##-##-####");
+  var maskFone = MaskTextInputFormatter(mask: "(##) # ####-####");
+  var maskCep = MaskTextInputFormatter(mask: "##.###-###");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +81,7 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  inputFormatters: [maskFone],
                   decoration: const InputDecoration(
                     labelText: 'Telefone',
                     hintText: 'Digite o telefone',
@@ -95,6 +98,7 @@ class _CadastroIdosoPageState extends State<CadastroIdosoPage> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  inputFormatters: [maskCep],
                   decoration: const InputDecoration(
                     labelText: 'CEP',
                     hintText: 'Digite o CEP',

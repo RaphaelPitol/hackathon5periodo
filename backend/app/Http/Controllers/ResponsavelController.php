@@ -24,7 +24,9 @@ class ResponsavelController extends Controller
 
   public function login(Request $request)
 {
-  $responsavel = Responsavel::where('cpf', $request->cpf)->first();
+  $cpf = preg_replace('/\D/', '', $request->cpf);
+  
+  $responsavel = Responsavel::where('cpf', $cpf)->first();
 
 
   if (!$responsavel) {

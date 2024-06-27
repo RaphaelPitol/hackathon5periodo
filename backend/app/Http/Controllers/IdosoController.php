@@ -31,8 +31,8 @@ class IdosoController extends Controller
       $idoso = new Idoso();
       $idoso->nome = $request->nome;
       $idoso->data_nascimento = $data->format('Y-m-d');
-      $idoso->telefone = $request->telefone;
-      $idoso->cep = $request->cep;
+      $idoso->telefone = preg_replace('/\D/', '', $request->telefone);
+      $idoso->cep = preg_replace('/\D/', '', $request->cep);
       $idoso->cidade = $request->cidade;
       $idoso->endereco = $request->endereco;
       $idoso->numero = $request->numero;
