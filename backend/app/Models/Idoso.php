@@ -35,4 +35,6 @@ class Idoso extends Model
     {
         return $this->hasMany(Agendamento::class);
     }
+
+   
 }

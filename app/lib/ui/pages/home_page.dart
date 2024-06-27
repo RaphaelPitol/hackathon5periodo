@@ -1,6 +1,6 @@
 
 import 'package:app_flutter/ui/pages/dados_usuario_page.dart';
-import 'package:app_flutter/ui/pages/vacinas_pendentes_page.dart';
+import 'package:app_flutter/ui/pages/vacina_page.dart';
 import 'package:app_flutter/ui/pages/agendar_visita_page.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:app_flutter/ui/widgets/carrosel_home.dart';
@@ -114,10 +114,7 @@ import '../widgets/menu_lateral.dart';
     }
 
     void _abrirDetalhesVacinas(BuildContext context) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => VacinasPendentesPage()),
-          (route) => false,
+     Navigator.push(context, MaterialPageRoute(builder: (context) => VacinaPage())
       );
     }
 
@@ -143,7 +140,7 @@ import '../widgets/menu_lateral.dart';
           "Clique": () => _abrirDetalhesVacinas(context)
         },
 
-        {"Texto": "Agendar Visita", "Clique": () => _abrirAgendarVisita(context)},
+        {"Texto": "Agendamentos", "Clique": () => _abrirAgendarVisita(context)},
 
         {"Texto": "Sair", "Clique": () => _confirmarLogout(context)},
       ];
