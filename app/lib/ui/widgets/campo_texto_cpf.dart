@@ -27,7 +27,7 @@ class CampoCPF extends StatelessWidget {
         suffixStyle: TextStyle(color: Colors.white, fontSize: 14),
         fillColor: Colors.black12,
         filled: true,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(7),
             )),
         focusedBorder: const OutlineInputBorder(
