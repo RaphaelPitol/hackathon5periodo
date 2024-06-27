@@ -1,6 +1,7 @@
 
 import 'package:app_flutter/ui/pages/dados_usuario_page.dart';
 import 'package:app_flutter/ui/pages/agendar_visita_page.dart';
+import 'package:app_flutter/ui/pages/vacina_page.dart';
 import 'package:app_flutter/ui/widgets/barra_titulo.dart';
 import 'package:app_flutter/ui/widgets/carrosel_home.dart';
 import 'package:flutter/material.dart';
@@ -104,8 +105,8 @@ import '../widgets/menu_lateral.dart';
         },
 
         {
-          "Texto": "Agendar Visita",
-          "Clique": () => rotaPagina(context, const  AgendarVisitaPage())
+          "Texto": "Detalhes das Vacinas",
+          "Clique": () => rotaPagina(context, const  VacinaPage())
         },
 
 
