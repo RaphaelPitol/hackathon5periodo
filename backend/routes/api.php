@@ -38,6 +38,7 @@ Route::put('/updateagente/{id}', [AgenteSaudeController::class, 'update']);
 Route::delete('/deleteagente/{id}' , [AgenteSaudeController::class, 'destroy']);
 
 Route::get('/indexagenda', [AgendamentoController::class, 'index']);
+Route::get('/showagenda/{id}', [AgendamentoController::class, 'show']);
 Route::post('/createagendamento', [AgendamentoController::class, 'create']);
 Route::put('/updateagendamento/{id}', [AgendamentoController::class, 'update']);
 Route::delete('/deleteagenda/{id}' , [AgendamentoController::class, 'destroy']);

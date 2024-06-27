@@ -57,7 +57,23 @@ class AgendamentoController extends Controller
      */
     public function show(string $id)
     {
-        //
+      $agenda = Agendamento::where('idoso_id', $id)->get();
+      
+
+      if ($agenda->isEmpty()) {
+          return response()->json([
+              "mensagen" => "Não existe Agenda para este Idoso!"
+          ]);
+      }else {
+
+        return response()->json([
+            "mensagen" => "Lista de Agendamento",
+            "agenda" => $agenda
+        ]);
+      }
+    
+   
+
     }
 
     /**

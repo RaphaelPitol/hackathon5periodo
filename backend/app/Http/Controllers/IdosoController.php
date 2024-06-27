@@ -62,10 +62,11 @@ class IdosoController extends Controller
    
     public function getIdosoResponsavel(string $id)
     {
-      $idosos = Idoso::all()->where('responsavel_id', $id);
+    
+      $idosos = Idoso::where('responsavel_id', $id)->get();
       
 
-        if (!$idosos) {
+        if ($idosos->isEmpty()) {
             return response()->json([
                 "menssagen" => "Não existe Idosos para este Responsavel!"
             ]);
